@@ -1,0 +1,32 @@
+[
+    {
+        "env_file": "worker1.env",
+        "networks": [
+            "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 2,
+        "log_path": "logs/testnet-worker1"
+    },
+    {
+        "env_file": "worker2.env",
+        "networks": [
+            "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 2,
+        "log_path": "logs/testnet-worker2"
+    },
+    {
+        "env_file": "worker3.env",
+        "networks": [
+            "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 2,
+        "log_path": "logs/testnet-worker3"
+    }
+]

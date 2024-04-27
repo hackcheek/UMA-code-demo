@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8cb4a676c1ff826d148500873203a67f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8cb4a676c1ff826d148500873203a67f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8cb4a676c1ff826d148500873203a67f = L.map(
+                "map_8cb4a676c1ff826d148500873203a67f",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 1,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c18dad29ba3c3849b75f3f6c126a2023 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c18dad29ba3c3849b75f3f6c126a2023.addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var marker_e22c2d4b6824d5446d72e87482e96e77 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_65495578e3792c297ac57ce7b552d016 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e22c2d4b6824d5446d72e87482e96e77.setIcon(icon_65495578e3792c297ac57ce7b552d016);
+        
+    
+        var popup_71003a8d7ffb4b7c00a272fa01f876d6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c03cb05a734977f3fb04e70561775c17 = $(`<div id="html_c03cb05a734977f3fb04e70561775c17" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_71003a8d7ffb4b7c00a272fa01f876d6.setContent(html_c03cb05a734977f3fb04e70561775c17);
+            
+        
+
+        marker_e22c2d4b6824d5446d72e87482e96e77.bindPopup(popup_71003a8d7ffb4b7c00a272fa01f876d6)
+        ;
+
+        
+    
+    
+            var marker_d0e77c668278b48a2f639174ea009298 = L.marker(
+                [51.3833, -0.1],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_b61b181d83f42e575c831d7d245f377e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d0e77c668278b48a2f639174ea009298.setIcon(icon_b61b181d83f42e575c831d7d245f377e);
+        
+    
+        var popup_1fe330c4c8c02f094fec9aaf13506f3b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_35b8544d5c0c3755dac86e722b444c70 = $(`<div id="html_35b8544d5c0c3755dac86e722b444c70" style="width: 100.0%; height: 100.0%;">ip = 104.28.86.109<br>city = Croydon<br>region = England<br>country = GB<br>org = AS13335 Cloudflare, Inc.<br>postal = CR0<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_1fe330c4c8c02f094fec9aaf13506f3b.setContent(html_35b8544d5c0c3755dac86e722b444c70);
+            
+        
+
+        marker_d0e77c668278b48a2f639174ea009298.bindPopup(popup_1fe330c4c8c02f094fec9aaf13506f3b)
+        ;
+
+        
+    
+    
+            var marker_c5b86bd77e427ff086343bc254f4470b = L.marker(
+                [51.3833, -0.1],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_8dde23bcaa9b8e74563569411e80c909 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c5b86bd77e427ff086343bc254f4470b.setIcon(icon_8dde23bcaa9b8e74563569411e80c909);
+        
+    
+        var popup_73c0d347b7ac847b1d909f2725d335ea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5798b634f271923d0623ee2791310e7f = $(`<div id="html_5798b634f271923d0623ee2791310e7f" style="width: 100.0%; height: 100.0%;">ip = 104.28.40.139<br>city = Croydon<br>region = England<br>country = GB<br>org = AS13335 Cloudflare, Inc.<br>postal = CR0<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_73c0d347b7ac847b1d909f2725d335ea.setContent(html_5798b634f271923d0623ee2791310e7f);
+            
+        
+
+        marker_c5b86bd77e427ff086343bc254f4470b.bindPopup(popup_73c0d347b7ac847b1d909f2725d335ea)
+        ;
+
+        
+    
+    
+            var marker_31df6ea6d7491b3f9ed5263d6a3a5a31 = L.marker(
+                [49.0167, -57.5984],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_15796d929eaed312f107f2afff054381 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_31df6ea6d7491b3f9ed5263d6a3a5a31.setIcon(icon_15796d929eaed312f107f2afff054381);
+        
+    
+        var popup_73868109f6f91feeebc62309b31ca2ef = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bb93fa36b7ca56be5a58a5bdc37c1b39 = $(`<div id="html_bb93fa36b7ca56be5a58a5bdc37c1b39" style="width: 100.0%; height: 100.0%;">ip = 47.55.100.16<br>hostname = crbknf0223w-47-55-100-16.dhcp-dynamic.fibreop.nl.bellaliant.net<br>city = Pasadena<br>region = Newfoundland and Labrador<br>country = CA<br>org = AS855 Bell Canada<br>postal = A8A<br>timezone = America/St_Johns<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,     "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result) <br>network = devnet/anvil</div>`)[0];
+                popup_73868109f6f91feeebc62309b31ca2ef.setContent(html_bb93fa36b7ca56be5a58a5bdc37c1b39);
+            
+        
+
+        marker_31df6ea6d7491b3f9ed5263d6a3a5a31.bindPopup(popup_73868109f6f91feeebc62309b31ca2ef)
+        ;
+
+        
+    
+    
+            var marker_86891cee19940e55eda3c6524c900b78 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_4a350a98556cb01ed47107decbd77103 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_86891cee19940e55eda3c6524c900b78.setIcon(icon_4a350a98556cb01ed47107decbd77103);
+        
+    
+        var popup_d6213508f54854d1da31c078adde5b09 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_06123c60af5f2aaff65727acdfd1de24 = $(`<div id="html_06123c60af5f2aaff65727acdfd1de24" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d6213508f54854d1da31c078adde5b09.setContent(html_06123c60af5f2aaff65727acdfd1de24);
+            
+        
+
+        marker_86891cee19940e55eda3c6524c900b78.bindPopup(popup_d6213508f54854d1da31c078adde5b09)
+        ;
+
+        
+    
+    
+            var marker_57de494e17a5e5d0d245f8fae735d252 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_c8e14861775cff5d6e15a642186d886a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_57de494e17a5e5d0d245f8fae735d252.setIcon(icon_c8e14861775cff5d6e15a642186d886a);
+        
+    
+        var popup_daeb89a0e1f315d43f642b21497b4596 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2588cf9c068a86a887a92a630b4fbfac = $(`<div id="html_2588cf9c068a86a887a92a630b4fbfac" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_daeb89a0e1f315d43f642b21497b4596.setContent(html_2588cf9c068a86a887a92a630b4fbfac);
+            
+        
+
+        marker_57de494e17a5e5d0d245f8fae735d252.bindPopup(popup_daeb89a0e1f315d43f642b21497b4596)
+        ;
+
+        
+    
+    
+            var marker_b74d2176c4f73d8aa021e7b537dda448 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_33990dd8a3c6921c06f1e6ee45574d2f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_b74d2176c4f73d8aa021e7b537dda448.setIcon(icon_33990dd8a3c6921c06f1e6ee45574d2f);
+        
+    
+        var popup_565140217a10b893ea7e82b99717491b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_359a251e82048df7ba7a4d397b801643 = $(`<div id="html_359a251e82048df7ba7a4d397b801643" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_565140217a10b893ea7e82b99717491b.setContent(html_359a251e82048df7ba7a4d397b801643);
+            
+        
+
+        marker_b74d2176c4f73d8aa021e7b537dda448.bindPopup(popup_565140217a10b893ea7e82b99717491b)
+        ;
+
+        
+    
+    
+            var marker_3f1e4450571ea97e7363b753c1e2b003 = L.marker(
+                [52.2298, 21.0118],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_7303035402af51ddfb62f5cbecfc79f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3f1e4450571ea97e7363b753c1e2b003.setIcon(icon_7303035402af51ddfb62f5cbecfc79f0);
+        
+    
+        var popup_61d1e4c69159d21da8585ec3ecc37b1b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2427bad53ac4b73bcb53383d98a3ff64 = $(`<div id="html_2427bad53ac4b73bcb53383d98a3ff64" style="width: 100.0%; height: 100.0%;">ip = 188.146.237.56<br>hostname = 188.146.237.56.mobile.internet.t-mobile.pl<br>city = Warsaw<br>region = Mazovia<br>country = PL<br>org = AS12912 T-Mobile Polska S.A.<br>postal = 00-002<br>timezone = Europe/Warsaw<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,     "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result) <br>network = testnet/optimism</div>`)[0];
+                popup_61d1e4c69159d21da8585ec3ecc37b1b.setContent(html_2427bad53ac4b73bcb53383d98a3ff64);
+            
+        
+
+        marker_3f1e4450571ea97e7363b753c1e2b003.bindPopup(popup_61d1e4c69159d21da8585ec3ecc37b1b)
+        ;
+
+        
+    
+    
+            var marker_95ff35bc5dcfbdc50630920ef613f0be = L.marker(
+                [52.2298, 21.0118],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_057f2724657c09f072c599d403f654dc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_95ff35bc5dcfbdc50630920ef613f0be.setIcon(icon_057f2724657c09f072c599d403f654dc);
+        
+    
+        var popup_152fcb25da53c74d0587f9f0240177e1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_406072a23381cfc32a55070d62c55231 = $(`<div id="html_406072a23381cfc32a55070d62c55231" style="width: 100.0%; height: 100.0%;">ip = 188.146.237.56<br>hostname = 188.146.237.56.mobile.internet.t-mobile.pl<br>city = Warsaw<br>region = Mazovia<br>country = PL<br>org = AS12912 T-Mobile Polska S.A.<br>postal = 00-002<br>timezone = Europe/Warsaw<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,     "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result) <br>network = testnet/optimism</div>`)[0];
+                popup_152fcb25da53c74d0587f9f0240177e1.setContent(html_406072a23381cfc32a55070d62c55231);
+            
+        
+
+        marker_95ff35bc5dcfbdc50630920ef613f0be.bindPopup(popup_152fcb25da53c74d0587f9f0240177e1)
+        ;
+
+        
+    
+    
+            var marker_0b9d15b7093da4c04447e528d82d4e44 = L.marker(
+                [45.0705, 7.6868],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_8c77962c350c7fd88d159ed14df1e65d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0b9d15b7093da4c04447e528d82d4e44.setIcon(icon_8c77962c350c7fd88d159ed14df1e65d);
+        
+    
+        var popup_e69f846ce68e7290349cca66ef8d4094 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_cf88022e79497cd0f96f3395f4a6430e = $(`<div id="html_cf88022e79497cd0f96f3395f4a6430e" style="width: 100.0%; height: 100.0%;">ip = 101.56.192.242<br>city = Turin<br>region = Piedmont<br>country = IT<br>org = AS210278 Sky Italia srl<br>postal = 10100<br>timezone = Europe/Rome<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_e69f846ce68e7290349cca66ef8d4094.setContent(html_cf88022e79497cd0f96f3395f4a6430e);
+            
+        
+
+        marker_0b9d15b7093da4c04447e528d82d4e44.bindPopup(popup_e69f846ce68e7290349cca66ef8d4094)
+        ;
+
+        
+    
+    
+            var marker_f57a44845940be64ed9bef5170dfc655 = L.marker(
+                [45.5376, 9.927],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5b854778029ac285a316a3693da3971f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f57a44845940be64ed9bef5170dfc655.setIcon(icon_5b854778029ac285a316a3693da3971f);
+        
+    
+        var popup_02c1d7399adc8d31af77e6d2a622cc31 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_12c7e0c067b8b0ad174b59496220ebad = $(`<div id="html_12c7e0c067b8b0ad174b59496220ebad" style="width: 100.0%; height: 100.0%;">ip = 79.8.60.171<br>hostname = host-79-8-60-171.business.telecomitalia.it<br>city = Chiari<br>region = Lombardy<br>country = IT<br>org = AS3269 Telecom Italia S.p.A.<br>postal = 25032<br>timezone = Europe/Rome<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,     "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result) <br>network = devnet/anvil</div>`)[0];
+                popup_02c1d7399adc8d31af77e6d2a622cc31.setContent(html_12c7e0c067b8b0ad174b59496220ebad);
+            
+        
+
+        marker_f57a44845940be64ed9bef5170dfc655.bindPopup(popup_02c1d7399adc8d31af77e6d2a622cc31)
+        ;
+
+        
+    
+    
+            var marker_46ae2be0589e8d9df7dae120c0c1ef6c = L.marker(
+                [47.6833, 17.6351],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_d1f175603949fa79a393bfc49ccb61b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_46ae2be0589e8d9df7dae120c0c1ef6c.setIcon(icon_d1f175603949fa79a393bfc49ccb61b7);
+        
+    
+        var popup_a9fc7f96195c3a1878d38797dae50a31 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ae5ffac9693c12f2581a91e61fbc7762 = $(`<div id="html_ae5ffac9693c12f2581a91e61fbc7762" style="width: 100.0%; height: 100.0%;">ip = 32.112.187.174<br>city = Győr<br>region = Győr-Moson-Sopron<br>country = HU<br>org = AS2686 AT&T Corp.<br>postal = 9011<br>timezone = Europe/Budapest<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_a9fc7f96195c3a1878d38797dae50a31.setContent(html_ae5ffac9693c12f2581a91e61fbc7762);
+            
+        
+
+        marker_46ae2be0589e8d9df7dae120c0c1ef6c.bindPopup(popup_a9fc7f96195c3a1878d38797dae50a31)
+        ;
+
+        
+    
+    
+            var marker_698f1f66c29c66eaaa7c1ca38b8becd3 = L.marker(
+                [47.6833, 17.6351],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_c9ff88df6271f3cd327a2f33253e7361 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_698f1f66c29c66eaaa7c1ca38b8becd3.setIcon(icon_c9ff88df6271f3cd327a2f33253e7361);
+        
+    
+        var popup_7caf68c2cbb25f8d1b84e37f56bc3389 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4855e6f0eefad8d406c1debaec7f5b88 = $(`<div id="html_4855e6f0eefad8d406c1debaec7f5b88" style="width: 100.0%; height: 100.0%;">ip = 32.112.187.174<br>city = Győr<br>region = Győr-Moson-Sopron<br>country = HU<br>org = AS2686 AT&T Corp.<br>postal = 9011<br>timezone = Europe/Budapest<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_7caf68c2cbb25f8d1b84e37f56bc3389.setContent(html_4855e6f0eefad8d406c1debaec7f5b88);
+            
+        
+
+        marker_698f1f66c29c66eaaa7c1ca38b8becd3.bindPopup(popup_7caf68c2cbb25f8d1b84e37f56bc3389)
+        ;
+
+        
+    
+    
+            var marker_d02911da415853c5292b913ffe7ea274 = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_0cbc9f057d11b97cfba48a2c9f5300ff = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d02911da415853c5292b913ffe7ea274.setIcon(icon_0cbc9f057d11b97cfba48a2c9f5300ff);
+        
+    
+        var popup_8033760944e36e8caf9b3a2fc0f5e91e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_834ee5739c80dc1c3e785e339fc8a942 = $(`<div id="html_834ee5739c80dc1c3e785e339fc8a942" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_8033760944e36e8caf9b3a2fc0f5e91e.setContent(html_834ee5739c80dc1c3e785e339fc8a942);
+            
+        
+
+        marker_d02911da415853c5292b913ffe7ea274.bindPopup(popup_8033760944e36e8caf9b3a2fc0f5e91e)
+        ;
+
+        
+    
+    
+            var marker_fe98a3f14967c361cb685d585e323786 = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f4da1af1da331b8b0754798afaf0cc88 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fe98a3f14967c361cb685d585e323786.setIcon(icon_f4da1af1da331b8b0754798afaf0cc88);
+        
+    
+        var popup_f6ee4192e4cf102c5ce5911a4e3e06ee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ea180c44c826013242c19f6101e87cb1 = $(`<div id="html_ea180c44c826013242c19f6101e87cb1" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_f6ee4192e4cf102c5ce5911a4e3e06ee.setContent(html_ea180c44c826013242c19f6101e87cb1);
+            
+        
+
+        marker_fe98a3f14967c361cb685d585e323786.bindPopup(popup_f6ee4192e4cf102c5ce5911a4e3e06ee)
+        ;
+
+        
+    
+    
+            var marker_07fac467d0c590f30227372522580bca = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f6ec7b53b8b1b7295d4702222b30db16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_07fac467d0c590f30227372522580bca.setIcon(icon_f6ec7b53b8b1b7295d4702222b30db16);
+        
+    
+        var popup_01872be09c42c6c8e651b6a14761ee6c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_79ed5ae8969b0c55cb9ae766f7f5f100 = $(`<div id="html_79ed5ae8969b0c55cb9ae766f7f5f100" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_01872be09c42c6c8e651b6a14761ee6c.setContent(html_79ed5ae8969b0c55cb9ae766f7f5f100);
+            
+        
+
+        marker_07fac467d0c590f30227372522580bca.bindPopup(popup_01872be09c42c6c8e651b6a14761ee6c)
+        ;
+
+        
+    
+    
+            var marker_91de68cfe7ffbcfe85b01ee475286829 = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_089ff826c0847364991f5251529d3114 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_91de68cfe7ffbcfe85b01ee475286829.setIcon(icon_089ff826c0847364991f5251529d3114);
+        
+    
+        var popup_d1e1ddf4e4cb9995d5f6d6ffdb62094c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_448fea796eb5ee04d6d612d2d099809b = $(`<div id="html_448fea796eb5ee04d6d612d2d099809b" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d1e1ddf4e4cb9995d5f6d6ffdb62094c.setContent(html_448fea796eb5ee04d6d612d2d099809b);
+            
+        
+
+        marker_91de68cfe7ffbcfe85b01ee475286829.bindPopup(popup_d1e1ddf4e4cb9995d5f6d6ffdb62094c)
+        ;
+
+        
+    
+    
+            var marker_420ab596296e290fb914047b8ebb645c = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_02df5f1c886de7680fb213bd4d9a07fa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_420ab596296e290fb914047b8ebb645c.setIcon(icon_02df5f1c886de7680fb213bd4d9a07fa);
+        
+    
+        var popup_7d0ef8bf38c1f8d46c99589ac1e1a1b8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d7eed9f0aee167bce43af07bd9d60fdc = $(`<div id="html_d7eed9f0aee167bce43af07bd9d60fdc" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_7d0ef8bf38c1f8d46c99589ac1e1a1b8.setContent(html_d7eed9f0aee167bce43af07bd9d60fdc);
+            
+        
+
+        marker_420ab596296e290fb914047b8ebb645c.bindPopup(popup_7d0ef8bf38c1f8d46c99589ac1e1a1b8)
+        ;
+
+        
+    
+    
+            var marker_af4cc714a447955954329180739b958e = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_ded9e06fdfd0134e1862ca050f71c189 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_af4cc714a447955954329180739b958e.setIcon(icon_ded9e06fdfd0134e1862ca050f71c189);
+        
+    
+        var popup_e648a2fe982b6a448f2c994ce62eeaa4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c5b0f9e43fdc6896d8be521349301f2e = $(`<div id="html_c5b0f9e43fdc6896d8be521349301f2e" style="width: 100.0%; height: 100.0%;">ip = 31.94.5.205<br>city = London<br>region = England<br>country = GB<br>org = AS2856 British Telecommunications PLC<br>postal = E1W<br>timezone = Europe/London<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_e648a2fe982b6a448f2c994ce62eeaa4.setContent(html_c5b0f9e43fdc6896d8be521349301f2e);
+            
+        
+
+        marker_af4cc714a447955954329180739b958e.bindPopup(popup_e648a2fe982b6a448f2c994ce62eeaa4)
+        ;
+
+        
+    
+    
+            var marker_505392d5206eda6ae2356b1dc326c267 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_9e3ce377f234469d6f929f3bbce53186 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_505392d5206eda6ae2356b1dc326c267.setIcon(icon_9e3ce377f234469d6f929f3bbce53186);
+        
+    
+        var popup_d7346586054c6a01f55dfcd779e3b0ec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3c0ab98c0478e72e49909998b0f8c439 = $(`<div id="html_3c0ab98c0478e72e49909998b0f8c439" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_d7346586054c6a01f55dfcd779e3b0ec.setContent(html_3c0ab98c0478e72e49909998b0f8c439);
+            
+        
+
+        marker_505392d5206eda6ae2356b1dc326c267.bindPopup(popup_d7346586054c6a01f55dfcd779e3b0ec)
+        ;
+
+        
+    
+    
+            var marker_c96698e959917f9e87aa4e53427adf5f = L.marker(
+                [39.934, -74.891],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_405dda80ad30e1cd1e1267498077aab1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c96698e959917f9e87aa4e53427adf5f.setIcon(icon_405dda80ad30e1cd1e1267498077aab1);
+        
+    
+        var popup_9d0d40d67e09c04f510581d780f2a471 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_dcdf46db3b732e911db747b64dad6b0d = $(`<div id="html_dcdf46db3b732e911db747b64dad6b0d" style="width: 100.0%; height: 100.0%;">ip = 50.230.171.211<br>city = Mount Laurel<br>region = New Jersey<br>country = US<br>org = AS7922 Comcast Cable Communications, LLC<br>postal = 08054<br>timezone = America/New_York<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_9d0d40d67e09c04f510581d780f2a471.setContent(html_dcdf46db3b732e911db747b64dad6b0d);
+            
+        
+
+        marker_c96698e959917f9e87aa4e53427adf5f.bindPopup(popup_9d0d40d67e09c04f510581d780f2a471)
+        ;
+
+        
+    
+    
+            var marker_6299d132182730808b3c2deab5c82cd3 = L.marker(
+                [39.934, -74.891],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_404cc06ab07717f15cde784e90d0b50f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6299d132182730808b3c2deab5c82cd3.setIcon(icon_404cc06ab07717f15cde784e90d0b50f);
+        
+    
+        var popup_d1694b2bf96aa961361ef8ef80aef1ec = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d9287af3552a73e0c52aba1933e573a5 = $(`<div id="html_d9287af3552a73e0c52aba1933e573a5" style="width: 100.0%; height: 100.0%;">ip = 50.230.171.211<br>city = Mount Laurel<br>region = New Jersey<br>country = US<br>org = AS7922 Comcast Cable Communications, LLC<br>postal = 08054<br>timezone = America/New_York<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d1694b2bf96aa961361ef8ef80aef1ec.setContent(html_d9287af3552a73e0c52aba1933e573a5);
+            
+        
+
+        marker_6299d132182730808b3c2deab5c82cd3.bindPopup(popup_d1694b2bf96aa961361ef8ef80aef1ec)
+        ;
+
+        
+    
+    
+            var marker_473f0bb18d09d4228cff36b8e494d6b9 = L.marker(
+                [39.934, -74.891],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_e15fcfa635b6a8315339925920c031e2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_473f0bb18d09d4228cff36b8e494d6b9.setIcon(icon_e15fcfa635b6a8315339925920c031e2);
+        
+    
+        var popup_b454368f9d1155f048ad547deb8ab690 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_61b30460fa6e38bfad1e2afe23dc15d7 = $(`<div id="html_61b30460fa6e38bfad1e2afe23dc15d7" style="width: 100.0%; height: 100.0%;">ip = 50.230.171.211<br>city = Mount Laurel<br>region = New Jersey<br>country = US<br>org = AS7922 Comcast Cable Communications, LLC<br>postal = 08054<br>timezone = America/New_York<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_b454368f9d1155f048ad547deb8ab690.setContent(html_61b30460fa6e38bfad1e2afe23dc15d7);
+            
+        
+
+        marker_473f0bb18d09d4228cff36b8e494d6b9.bindPopup(popup_b454368f9d1155f048ad547deb8ab690)
+        ;
+
+        
+    
+    
+            var marker_ea423a9c93de2c336baca508aedbfdf2 = L.marker(
+                [41.8713, -87.6277],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_7df5350e4c7c5bf281f258be8eb24a16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ea423a9c93de2c336baca508aedbfdf2.setIcon(icon_7df5350e4c7c5bf281f258be8eb24a16);
+        
+    
+        var popup_1eb7ec88f1ba50e062716ee5954faaee = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_941a68943c998a20aa1d45ca1e429757 = $(`<div id="html_941a68943c998a20aa1d45ca1e429757" style="width: 100.0%; height: 100.0%;">ip = 67.175.248.201<br>hostname = c-67-175-248-201.hsd1.il.comcast.net<br>city = Chicago<br>region = Illinois<br>country = US<br>org = AS33491 Comcast Cable Communications, LLC<br>postal = 60605<br>timezone = America/Chicago<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_1eb7ec88f1ba50e062716ee5954faaee.setContent(html_941a68943c998a20aa1d45ca1e429757);
+            
+        
+
+        marker_ea423a9c93de2c336baca508aedbfdf2.bindPopup(popup_1eb7ec88f1ba50e062716ee5954faaee)
+        ;
+
+        
+    
+    
+            var marker_55f18825fb63260b6792fb766a1e0aa8 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_4a842cc1124062890700b775456e44c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_55f18825fb63260b6792fb766a1e0aa8.setIcon(icon_4a842cc1124062890700b775456e44c6);
+        
+    
+        var popup_15706ba173f6794eabc58e8170f40670 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_78d2f004e78d089dfea4d1c078892c46 = $(`<div id="html_78d2f004e78d089dfea4d1c078892c46" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_15706ba173f6794eabc58e8170f40670.setContent(html_78d2f004e78d089dfea4d1c078892c46);
+            
+        
+
+        marker_55f18825fb63260b6792fb766a1e0aa8.bindPopup(popup_15706ba173f6794eabc58e8170f40670)
+        ;
+
+        
+    
+    
+            var marker_09d8497c9710a651347c92128a9f0944 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5125fb5909a4374e2fa1fa2c88c40997 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_09d8497c9710a651347c92128a9f0944.setIcon(icon_5125fb5909a4374e2fa1fa2c88c40997);
+        
+    
+        var popup_62d79ea474208c9f5760c4f872628562 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ba9565d23d6857219ffb4fad14bb224 = $(`<div id="html_3ba9565d23d6857219ffb4fad14bb224" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_62d79ea474208c9f5760c4f872628562.setContent(html_3ba9565d23d6857219ffb4fad14bb224);
+            
+        
+
+        marker_09d8497c9710a651347c92128a9f0944.bindPopup(popup_62d79ea474208c9f5760c4f872628562)
+        ;
+
+        
+    
+    
+            var marker_07b363ecc55119161f373242d9df901d = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f3a27e4835550ddad811838df247c716 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_07b363ecc55119161f373242d9df901d.setIcon(icon_f3a27e4835550ddad811838df247c716);
+        
+    
+        var popup_5dd5a0408d973a4f7bfd4df48d466dab = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9ef3aeee12ef8d7a65af9588682a76bd = $(`<div id="html_9ef3aeee12ef8d7a65af9588682a76bd" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_5dd5a0408d973a4f7bfd4df48d466dab.setContent(html_9ef3aeee12ef8d7a65af9588682a76bd);
+            
+        
+
+        marker_07b363ecc55119161f373242d9df901d.bindPopup(popup_5dd5a0408d973a4f7bfd4df48d466dab)
+        ;
+
+        
+    
+    
+            var marker_55f3c662dfa5f55c03438754028e0f9f = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f2cf4a3bc4d03c9d02503230496d60ed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_55f3c662dfa5f55c03438754028e0f9f.setIcon(icon_f2cf4a3bc4d03c9d02503230496d60ed);
+        
+    
+        var popup_30e4b81783f23796d4554b1208f90866 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_01da4b66178593283da14c123e8459ba = $(`<div id="html_01da4b66178593283da14c123e8459ba" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_30e4b81783f23796d4554b1208f90866.setContent(html_01da4b66178593283da14c123e8459ba);
+            
+        
+
+        marker_55f3c662dfa5f55c03438754028e0f9f.bindPopup(popup_30e4b81783f23796d4554b1208f90866)
+        ;
+
+        
+    
+    
+            var marker_e19363e9adf1f52c9063f16ec6ae9caf = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_577da57b7bec3c1b8aecc7e0a17e7012 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e19363e9adf1f52c9063f16ec6ae9caf.setIcon(icon_577da57b7bec3c1b8aecc7e0a17e7012);
+        
+    
+        var popup_2b9aa65b8b9c3d2ab90ffdb9f77d649e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c731e9b9911e1e9b154284cef7a129a8 = $(`<div id="html_c731e9b9911e1e9b154284cef7a129a8" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_2b9aa65b8b9c3d2ab90ffdb9f77d649e.setContent(html_c731e9b9911e1e9b154284cef7a129a8);
+            
+        
+
+        marker_e19363e9adf1f52c9063f16ec6ae9caf.bindPopup(popup_2b9aa65b8b9c3d2ab90ffdb9f77d649e)
+        ;
+
+        
+    
+    
+            var marker_a59adaa7b72923338eac024cff2817bc = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_0dfb7aa386f329400bc01d3e79f738fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a59adaa7b72923338eac024cff2817bc.setIcon(icon_0dfb7aa386f329400bc01d3e79f738fc);
+        
+    
+        var popup_f9bdf8382d19a87a2c567e4dbba9b5ca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_965b56795f9f1eaeda64dfa8fe792532 = $(`<div id="html_965b56795f9f1eaeda64dfa8fe792532" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_f9bdf8382d19a87a2c567e4dbba9b5ca.setContent(html_965b56795f9f1eaeda64dfa8fe792532);
+            
+        
+
+        marker_a59adaa7b72923338eac024cff2817bc.bindPopup(popup_f9bdf8382d19a87a2c567e4dbba9b5ca)
+        ;
+
+        
+    
+    
+            var marker_5c661da1346f2415b22999ab047e672b = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_dd267e33da0ded5e436da3a070f1c804 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5c661da1346f2415b22999ab047e672b.setIcon(icon_dd267e33da0ded5e436da3a070f1c804);
+        
+    
+        var popup_ed96961a0f7a12f402696ab89d36e7c3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f93b0ddbdea9a832fc04794f11c30e9f = $(`<div id="html_f93b0ddbdea9a832fc04794f11c30e9f" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_ed96961a0f7a12f402696ab89d36e7c3.setContent(html_f93b0ddbdea9a832fc04794f11c30e9f);
+            
+        
+
+        marker_5c661da1346f2415b22999ab047e672b.bindPopup(popup_ed96961a0f7a12f402696ab89d36e7c3)
+        ;
+
+        
+    
+    
+            var marker_933de49036f397bb641fd50158054f12 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_b661da1276ce49167fe78030ff2adfb1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_933de49036f397bb641fd50158054f12.setIcon(icon_b661da1276ce49167fe78030ff2adfb1);
+        
+    
+        var popup_f4ea1ac6c0160c693a3979fc29fda445 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_37af10835202e66b55ca6975e311421e = $(`<div id="html_37af10835202e66b55ca6975e311421e" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_f4ea1ac6c0160c693a3979fc29fda445.setContent(html_37af10835202e66b55ca6975e311421e);
+            
+        
+
+        marker_933de49036f397bb641fd50158054f12.bindPopup(popup_f4ea1ac6c0160c693a3979fc29fda445)
+        ;
+
+        
+    
+    
+            var marker_6f2981a4b161363dd6964ad6a257aae9 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_d1ec7c63019b8b987d8eda6487e5ae1d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6f2981a4b161363dd6964ad6a257aae9.setIcon(icon_d1ec7c63019b8b987d8eda6487e5ae1d);
+        
+    
+        var popup_d7c4e903589be1bba0a6c8477da821d5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1d0eaf2e7acdaec13b228db6882814da = $(`<div id="html_1d0eaf2e7acdaec13b228db6882814da" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d7c4e903589be1bba0a6c8477da821d5.setContent(html_1d0eaf2e7acdaec13b228db6882814da);
+            
+        
+
+        marker_6f2981a4b161363dd6964ad6a257aae9.bindPopup(popup_d7c4e903589be1bba0a6c8477da821d5)
+        ;
+
+        
+    
+    
+            var marker_589399b4cb6dc53d68701cc5fb6c5988 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5f9088a77d858f9d72ae3aa4df153560 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_589399b4cb6dc53d68701cc5fb6c5988.setIcon(icon_5f9088a77d858f9d72ae3aa4df153560);
+        
+    
+        var popup_14e0f11dd3a982fd0f3112d61cb12fde = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_960b28755aac7dba2f3b448fabecfdfb = $(`<div id="html_960b28755aac7dba2f3b448fabecfdfb" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_14e0f11dd3a982fd0f3112d61cb12fde.setContent(html_960b28755aac7dba2f3b448fabecfdfb);
+            
+        
+
+        marker_589399b4cb6dc53d68701cc5fb6c5988.bindPopup(popup_14e0f11dd3a982fd0f3112d61cb12fde)
+        ;
+
+        
+    
+    
+            var marker_ab4cff223aabf22f9e518da27ab792bf = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5660bc86f1bef7257ab0f0ed94b7434c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ab4cff223aabf22f9e518da27ab792bf.setIcon(icon_5660bc86f1bef7257ab0f0ed94b7434c);
+        
+    
+        var popup_e8ccc13b8fb4dd1f779e14c58a6ca604 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_720de74d21484677a4a2909c3da4df07 = $(`<div id="html_720de74d21484677a4a2909c3da4df07" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_e8ccc13b8fb4dd1f779e14c58a6ca604.setContent(html_720de74d21484677a4a2909c3da4df07);
+            
+        
+
+        marker_ab4cff223aabf22f9e518da27ab792bf.bindPopup(popup_e8ccc13b8fb4dd1f779e14c58a6ca604)
+        ;
+
+        
+    
+    
+            var marker_8e084a37de483a950ae575f6c8d0f678 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_c9d78511220d1f44bef2984b3fa82fb0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8e084a37de483a950ae575f6c8d0f678.setIcon(icon_c9d78511220d1f44bef2984b3fa82fb0);
+        
+    
+        var popup_d529b28489fb13f45e8c665e8ef0815e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fa8950c82ce971353e4f7d9ac6dc2877 = $(`<div id="html_fa8950c82ce971353e4f7d9ac6dc2877" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d529b28489fb13f45e8c665e8ef0815e.setContent(html_fa8950c82ce971353e4f7d9ac6dc2877);
+            
+        
+
+        marker_8e084a37de483a950ae575f6c8d0f678.bindPopup(popup_d529b28489fb13f45e8c665e8ef0815e)
+        ;
+
+        
+    
+    
+            var marker_f7955a76f4cd83047403dc9627c2fa66 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_9d6af431bfab4ed881fd8026b9fc8e06 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f7955a76f4cd83047403dc9627c2fa66.setIcon(icon_9d6af431bfab4ed881fd8026b9fc8e06);
+        
+    
+        var popup_67ced845531c646865da44a320dc8507 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_91642c804513bf6c3f774a6c4a3ebed2 = $(`<div id="html_91642c804513bf6c3f774a6c4a3ebed2" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_67ced845531c646865da44a320dc8507.setContent(html_91642c804513bf6c3f774a6c4a3ebed2);
+            
+        
+
+        marker_f7955a76f4cd83047403dc9627c2fa66.bindPopup(popup_67ced845531c646865da44a320dc8507)
+        ;
+
+        
+    
+    
+            var marker_fd43f5c1428999de204b1648002b0830 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_3866af396723375c55db91e743bdd6b6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fd43f5c1428999de204b1648002b0830.setIcon(icon_3866af396723375c55db91e743bdd6b6);
+        
+    
+        var popup_0218d3989806bdd429e0cebb34c4c913 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_32c6d301d3d482bde0f2eb727b86ad8b = $(`<div id="html_32c6d301d3d482bde0f2eb727b86ad8b" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_0218d3989806bdd429e0cebb34c4c913.setContent(html_32c6d301d3d482bde0f2eb727b86ad8b);
+            
+        
+
+        marker_fd43f5c1428999de204b1648002b0830.bindPopup(popup_0218d3989806bdd429e0cebb34c4c913)
+        ;
+
+        
+    
+    
+            var marker_fb9838555159eca26c0615ffa0ada68e = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f648c8811dcd98b2baaf6668dd5c5667 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fb9838555159eca26c0615ffa0ada68e.setIcon(icon_f648c8811dcd98b2baaf6668dd5c5667);
+        
+    
+        var popup_a570ffad244dde76f5f568a881b1496a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_936c6b6739c026a329e28812f62b493f = $(`<div id="html_936c6b6739c026a329e28812f62b493f" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_a570ffad244dde76f5f568a881b1496a.setContent(html_936c6b6739c026a329e28812f62b493f);
+            
+        
+
+        marker_fb9838555159eca26c0615ffa0ada68e.bindPopup(popup_a570ffad244dde76f5f568a881b1496a)
+        ;
+
+        
+    
+    
+            var marker_75a1442bc1abd2c7d37f347ec503954f = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5f33cc18c823b48782d3139b38247b23 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_75a1442bc1abd2c7d37f347ec503954f.setIcon(icon_5f33cc18c823b48782d3139b38247b23);
+        
+    
+        var popup_4caf90147c03b715b9748e2039992e63 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8b294b117a5065e57557f3bec8ffb719 = $(`<div id="html_8b294b117a5065e57557f3bec8ffb719" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_4caf90147c03b715b9748e2039992e63.setContent(html_8b294b117a5065e57557f3bec8ffb719);
+            
+        
+
+        marker_75a1442bc1abd2c7d37f347ec503954f.bindPopup(popup_4caf90147c03b715b9748e2039992e63)
+        ;
+
+        
+    
+    
+            var marker_52d13b8b2e1333eaa40bcc31c6b10438 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_1353187c53c9d3b11f6bc46207e158f8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_52d13b8b2e1333eaa40bcc31c6b10438.setIcon(icon_1353187c53c9d3b11f6bc46207e158f8);
+        
+    
+        var popup_696542414b4f1f57b389f9e7e170a2fa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ee1951660c15372ee3e2d525b0ccb02f = $(`<div id="html_ee1951660c15372ee3e2d525b0ccb02f" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_696542414b4f1f57b389f9e7e170a2fa.setContent(html_ee1951660c15372ee3e2d525b0ccb02f);
+            
+        
+
+        marker_52d13b8b2e1333eaa40bcc31c6b10438.bindPopup(popup_696542414b4f1f57b389f9e7e170a2fa)
+        ;
+
+        
+    
+    
+            var marker_8c1c414b7fc4dcc0feafd8ae97cb39de = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_587abf1ba074fe13fcd688eb289713b8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_8c1c414b7fc4dcc0feafd8ae97cb39de.setIcon(icon_587abf1ba074fe13fcd688eb289713b8);
+        
+    
+        var popup_1329022374a00e00e0a56b14f6c69231 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bc09f7dfe6a6d186b941af4e008d4bfb = $(`<div id="html_bc09f7dfe6a6d186b941af4e008d4bfb" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_1329022374a00e00e0a56b14f6c69231.setContent(html_bc09f7dfe6a6d186b941af4e008d4bfb);
+            
+        
+
+        marker_8c1c414b7fc4dcc0feafd8ae97cb39de.bindPopup(popup_1329022374a00e00e0a56b14f6c69231)
+        ;
+
+        
+    
+    
+            var marker_6b902e4df6d332b87bc38ab494193629 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_86ba8f9cc6378f365e6b98610a874c25 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6b902e4df6d332b87bc38ab494193629.setIcon(icon_86ba8f9cc6378f365e6b98610a874c25);
+        
+    
+        var popup_066a0d7b9ed476a69c13bd6b50b16290 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f6b9d0df9e9f7315519223e53ed06f78 = $(`<div id="html_f6b9d0df9e9f7315519223e53ed06f78" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_066a0d7b9ed476a69c13bd6b50b16290.setContent(html_f6b9d0df9e9f7315519223e53ed06f78);
+            
+        
+
+        marker_6b902e4df6d332b87bc38ab494193629.bindPopup(popup_066a0d7b9ed476a69c13bd6b50b16290)
+        ;
+
+        
+    
+    
+            var marker_c3d377c359fc384fd1c968cc84df523c = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_7ffbb1b03c5cd8ce01ee4fdf52f8fd45 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c3d377c359fc384fd1c968cc84df523c.setIcon(icon_7ffbb1b03c5cd8ce01ee4fdf52f8fd45);
+        
+    
+        var popup_b7327d258e99b06b63e94cf91c79cb79 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b301f87430963940bcdd0d28aacdec9d = $(`<div id="html_b301f87430963940bcdd0d28aacdec9d" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_b7327d258e99b06b63e94cf91c79cb79.setContent(html_b301f87430963940bcdd0d28aacdec9d);
+            
+        
+
+        marker_c3d377c359fc384fd1c968cc84df523c.bindPopup(popup_b7327d258e99b06b63e94cf91c79cb79)
+        ;
+
+        
+    
+    
+            var marker_30a920719c08e0f298330c75d4ff805c = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_e1eb830ca049e9395693c64f0ab267d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_30a920719c08e0f298330c75d4ff805c.setIcon(icon_e1eb830ca049e9395693c64f0ab267d7);
+        
+    
+        var popup_9562a404d5b8caec7096073c1b358194 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5b52bca762de6285512bcdd4196c94e1 = $(`<div id="html_5b52bca762de6285512bcdd4196c94e1" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_9562a404d5b8caec7096073c1b358194.setContent(html_5b52bca762de6285512bcdd4196c94e1);
+            
+        
+
+        marker_30a920719c08e0f298330c75d4ff805c.bindPopup(popup_9562a404d5b8caec7096073c1b358194)
+        ;
+
+        
+    
+    
+            var marker_2eaaba71ea2269a864acbdd7f4364622 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_a8028401e5d88736e7e33caa42b4434d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2eaaba71ea2269a864acbdd7f4364622.setIcon(icon_a8028401e5d88736e7e33caa42b4434d);
+        
+    
+        var popup_d7c9e16e7a12f050ab2dc61a0dcfd3b9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_db40604f9f492db063697b56be8ad6ea = $(`<div id="html_db40604f9f492db063697b56be8ad6ea" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_d7c9e16e7a12f050ab2dc61a0dcfd3b9.setContent(html_db40604f9f492db063697b56be8ad6ea);
+            
+        
+
+        marker_2eaaba71ea2269a864acbdd7f4364622.bindPopup(popup_d7c9e16e7a12f050ab2dc61a0dcfd3b9)
+        ;
+
+        
+    
+    
+            var marker_f2cbd5316dc1dbfa05ee2e4d358c507d = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5b99af0e43418289587244699bac9f84 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f2cbd5316dc1dbfa05ee2e4d358c507d.setIcon(icon_5b99af0e43418289587244699bac9f84);
+        
+    
+        var popup_5c99391eac0c1472ae63b5fd47bb167e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_89a9924c45fc9f846413fdae65c4169c = $(`<div id="html_89a9924c45fc9f846413fdae65c4169c" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_5c99391eac0c1472ae63b5fd47bb167e.setContent(html_89a9924c45fc9f846413fdae65c4169c);
+            
+        
+
+        marker_f2cbd5316dc1dbfa05ee2e4d358c507d.bindPopup(popup_5c99391eac0c1472ae63b5fd47bb167e)
+        ;
+
+        
+    
+    
+            var marker_841bf353910260eafef7340c96a17b52 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_2a6b7413e1c4881dedb0267ee500778f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_841bf353910260eafef7340c96a17b52.setIcon(icon_2a6b7413e1c4881dedb0267ee500778f);
+        
+    
+        var popup_bce16f4d9c211108094ef5885a92fca6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_761818b2f9999585ce483185c33f1ad3 = $(`<div id="html_761818b2f9999585ce483185c33f1ad3" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_bce16f4d9c211108094ef5885a92fca6.setContent(html_761818b2f9999585ce483185c33f1ad3);
+            
+        
+
+        marker_841bf353910260eafef7340c96a17b52.bindPopup(popup_bce16f4d9c211108094ef5885a92fca6)
+        ;
+
+        
+    
+    
+            var marker_97e331fd7a7ff77af65a5997ae14814d = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_0df29599e3c1681d68b650905decae33 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_97e331fd7a7ff77af65a5997ae14814d.setIcon(icon_0df29599e3c1681d68b650905decae33);
+        
+    
+        var popup_559ddad906fa33a36dda6f53dd052b3e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6cc77f95c6102b9cea9093ffbfce213f = $(`<div id="html_6cc77f95c6102b9cea9093ffbfce213f" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_559ddad906fa33a36dda6f53dd052b3e.setContent(html_6cc77f95c6102b9cea9093ffbfce213f);
+            
+        
+
+        marker_97e331fd7a7ff77af65a5997ae14814d.bindPopup(popup_559ddad906fa33a36dda6f53dd052b3e)
+        ;
+
+        
+    
+    
+            var marker_a778386760d2e307f55d24ff6f5d8223 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5983fb9548ec1878e43d6dda8e1e758d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a778386760d2e307f55d24ff6f5d8223.setIcon(icon_5983fb9548ec1878e43d6dda8e1e758d);
+        
+    
+        var popup_5d0675f6b1120e1a26040f55999695ea = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5ab9cefdb15041aa4b511b5cccf9ea2e = $(`<div id="html_5ab9cefdb15041aa4b511b5cccf9ea2e" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_5d0675f6b1120e1a26040f55999695ea.setContent(html_5ab9cefdb15041aa4b511b5cccf9ea2e);
+            
+        
+
+        marker_a778386760d2e307f55d24ff6f5d8223.bindPopup(popup_5d0675f6b1120e1a26040f55999695ea)
+        ;
+
+        
+    
+    
+            var marker_00659af0b4173a613df34c485e911afb = L.marker(
+                [24.5773, 80.8272],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_139ada34e9cfed153c47074fb7c089c6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_00659af0b4173a613df34c485e911afb.setIcon(icon_139ada34e9cfed153c47074fb7c089c6);
+        
+    
+        var popup_c052f6a504bb2b0f91ce2c3866a6ad65 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_97f2ef5c7e6c23483338699c2870392a = $(`<div id="html_97f2ef5c7e6c23483338699c2870392a" style="width: 100.0%; height: 100.0%;">ip = 117.248.225.81<br>city = Satna<br>region = Madhya Pradesh<br>country = IN<br>org = AS9829 National Internet Backbone<br>postal = 485001<br>timezone = Asia/Kolkata<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_c052f6a504bb2b0f91ce2c3866a6ad65.setContent(html_97f2ef5c7e6c23483338699c2870392a);
+            
+        
+
+        marker_00659af0b4173a613df34c485e911afb.bindPopup(popup_c052f6a504bb2b0f91ce2c3866a6ad65)
+        ;
+
+        
+    
+    
+            var marker_4747360409e8bbf107ea52238be30a80 = L.marker(
+                [47.0056, 28.8575],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_afaa12e11bc7f4364adc09b11b371bca = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4747360409e8bbf107ea52238be30a80.setIcon(icon_afaa12e11bc7f4364adc09b11b371bca);
+        
+    
+        var popup_27aa203b2dce247c9bf628efc276feda = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4fbdaea4b30e3c765943a5dbe008919a = $(`<div id="html_4fbdaea4b30e3c765943a5dbe008919a" style="width: 100.0%; height: 100.0%;">ip = 91.242.113.185<br>city = Chisinau<br>region = Chișinău Municipality<br>country = MD<br>org = AS35346 SC ITNS.NET SRL<br>postal = MD-2000<br>timezone = Europe/Chisinau<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_27aa203b2dce247c9bf628efc276feda.setContent(html_4fbdaea4b30e3c765943a5dbe008919a);
+            
+        
+
+        marker_4747360409e8bbf107ea52238be30a80.bindPopup(popup_27aa203b2dce247c9bf628efc276feda)
+        ;
+
+        
+    
+    
+            var marker_0aa2ae2dca5270a6dcc0f3e22efa994c = L.marker(
+                [47.0056, 28.8575],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_29383e59ddc448a3e7cb852ca422a53e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0aa2ae2dca5270a6dcc0f3e22efa994c.setIcon(icon_29383e59ddc448a3e7cb852ca422a53e);
+        
+    
+        var popup_9508e19fb0fdf9ea76d08d9e04f1019a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_88a5ed9df8e91675d64f83ddf8073df4 = $(`<div id="html_88a5ed9df8e91675d64f83ddf8073df4" style="width: 100.0%; height: 100.0%;">ip = 91.242.113.185<br>city = Chisinau<br>region = Chișinău Municipality<br>country = MD<br>org = AS35346 SC ITNS.NET SRL<br>postal = MD-2000<br>timezone = Europe/Chisinau<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_9508e19fb0fdf9ea76d08d9e04f1019a.setContent(html_88a5ed9df8e91675d64f83ddf8073df4);
+            
+        
+
+        marker_0aa2ae2dca5270a6dcc0f3e22efa994c.bindPopup(popup_9508e19fb0fdf9ea76d08d9e04f1019a)
+        ;
+
+        
+    
+    
+            var marker_277fd71c0b483f0118f32e5610f3ebd2 = L.marker(
+                [47.0056, 28.8575],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_147dbcc9d8df994d363042524a2e21aa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_277fd71c0b483f0118f32e5610f3ebd2.setIcon(icon_147dbcc9d8df994d363042524a2e21aa);
+        
+    
+        var popup_4f5e826f51af37579e0311c355a0aa88 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b15e4e8a0e49dff2f1de0f02be5bb428 = $(`<div id="html_b15e4e8a0e49dff2f1de0f02be5bb428" style="width: 100.0%; height: 100.0%;">ip = 89.149.111.186<br>hostname = static.89.149.111.186.net.md<br>city = Chisinau<br>region = Chișinău Municipality<br>country = MD<br>org = AS31204 ORANGE MOLDOVA S.A.<br>postal = MD-2000<br>timezone = Europe/Chisinau<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_4f5e826f51af37579e0311c355a0aa88.setContent(html_b15e4e8a0e49dff2f1de0f02be5bb428);
+            
+        
+
+        marker_277fd71c0b483f0118f32e5610f3ebd2.bindPopup(popup_4f5e826f51af37579e0311c355a0aa88)
+        ;
+
+        
+    
+    
+            var marker_9ca236b75debfb41bfef4e087c212c80 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_77b127e633efb4d5a9effae9444dae16 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9ca236b75debfb41bfef4e087c212c80.setIcon(icon_77b127e633efb4d5a9effae9444dae16);
+        
+    
+        var popup_58282924a2142f6204187c1eb8333e55 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_85158ddf7c05ce905ef51f230d6e768c = $(`<div id="html_85158ddf7c05ce905ef51f230d6e768c" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_58282924a2142f6204187c1eb8333e55.setContent(html_85158ddf7c05ce905ef51f230d6e768c);
+            
+        
+
+        marker_9ca236b75debfb41bfef4e087c212c80.bindPopup(popup_58282924a2142f6204187c1eb8333e55)
+        ;
+
+        
+    
+    
+            var marker_4c31bbc24c5190d343584615c1188c81 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_862cc1431b7ba2f015f616618b53681a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4c31bbc24c5190d343584615c1188c81.setIcon(icon_862cc1431b7ba2f015f616618b53681a);
+        
+    
+        var popup_7d6ae2394ec31db0c542ef3056c8e04e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_6ce8192194842afa65e571c5a669d99b = $(`<div id="html_6ce8192194842afa65e571c5a669d99b" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_7d6ae2394ec31db0c542ef3056c8e04e.setContent(html_6ce8192194842afa65e571c5a669d99b);
+            
+        
+
+        marker_4c31bbc24c5190d343584615c1188c81.bindPopup(popup_7d6ae2394ec31db0c542ef3056c8e04e)
+        ;
+
+        
+    
+    
+            var marker_1a916f7d80179889a2182e66cb270735 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_0047908ae7611599287a3d552a375e34 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_1a916f7d80179889a2182e66cb270735.setIcon(icon_0047908ae7611599287a3d552a375e34);
+        
+    
+        var popup_80c23739ff90500a59009b99f86f74ca = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_49bc9c651a3d22aabada79962b95d182 = $(`<div id="html_49bc9c651a3d22aabada79962b95d182" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_80c23739ff90500a59009b99f86f74ca.setContent(html_49bc9c651a3d22aabada79962b95d182);
+            
+        
+
+        marker_1a916f7d80179889a2182e66cb270735.bindPopup(popup_80c23739ff90500a59009b99f86f74ca)
+        ;
+
+        
+    
+    
+            var marker_61f6978a682d4e6d618e100f93955262 = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_5a230f378ed570b223a79378b620b569 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_61f6978a682d4e6d618e100f93955262.setIcon(icon_5a230f378ed570b223a79378b620b569);
+        
+    
+        var popup_ccce1a3ad08b7f7bad1a548813e8fdfd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b41cff7f9e21e772a56915173f88505a = $(`<div id="html_b41cff7f9e21e772a56915173f88505a" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_ccce1a3ad08b7f7bad1a548813e8fdfd.setContent(html_b41cff7f9e21e772a56915173f88505a);
+            
+        
+
+        marker_61f6978a682d4e6d618e100f93955262.bindPopup(popup_ccce1a3ad08b7f7bad1a548813e8fdfd)
+        ;
+
+        
+    
+    
+            var marker_d804e6499534296f4f526c5463c6c736 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_7ca2fac65e4c8f9e1fc948573f310616 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d804e6499534296f4f526c5463c6c736.setIcon(icon_7ca2fac65e4c8f9e1fc948573f310616);
+        
+    
+        var popup_b0d0293274be1cec4cee3e3e39b6cdb0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7a56dd842d28f48a632dc260a49ac35c = $(`<div id="html_7a56dd842d28f48a632dc260a49ac35c" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_b0d0293274be1cec4cee3e3e39b6cdb0.setContent(html_7a56dd842d28f48a632dc260a49ac35c);
+            
+        
+
+        marker_d804e6499534296f4f526c5463c6c736.bindPopup(popup_b0d0293274be1cec4cee3e3e39b6cdb0)
+        ;
+
+        
+    
+    
+            var marker_f0548a48c37435ed85c33e210051396b = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_c95f0a6c746ea50d47e5ceecd9a5372f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_f0548a48c37435ed85c33e210051396b.setIcon(icon_c95f0a6c746ea50d47e5ceecd9a5372f);
+        
+    
+        var popup_b22465603bbc035319ca9b8216e88922 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7560fed68219ad604dc3d59989e58c53 = $(`<div id="html_7560fed68219ad604dc3d59989e58c53" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_b22465603bbc035319ca9b8216e88922.setContent(html_7560fed68219ad604dc3d59989e58c53);
+            
+        
+
+        marker_f0548a48c37435ed85c33e210051396b.bindPopup(popup_b22465603bbc035319ca9b8216e88922)
+        ;
+
+        
+    
+    
+            var marker_2f6cda7707c6b2989ce06b5741895a94 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_bf9eb9a556c850df9330967cbf252031 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2f6cda7707c6b2989ce06b5741895a94.setIcon(icon_bf9eb9a556c850df9330967cbf252031);
+        
+    
+        var popup_80c0f80617c054b5ab0593eeb0d13326 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a3e7cfd733af6a2a3a02f1cc865a3b27 = $(`<div id="html_a3e7cfd733af6a2a3a02f1cc865a3b27" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_80c0f80617c054b5ab0593eeb0d13326.setContent(html_a3e7cfd733af6a2a3a02f1cc865a3b27);
+            
+        
+
+        marker_2f6cda7707c6b2989ce06b5741895a94.bindPopup(popup_80c0f80617c054b5ab0593eeb0d13326)
+        ;
+
+        
+    
+    
+            var marker_a91598ee137c96b662def0f905ac676d = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_a0edaea595e244ef53cb3f49fc44b8e2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a91598ee137c96b662def0f905ac676d.setIcon(icon_a0edaea595e244ef53cb3f49fc44b8e2);
+        
+    
+        var popup_5d19a0f1f4e9cee5cc2150df7405b1b2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c564e97ef205d09ff4271709d2a12713 = $(`<div id="html_c564e97ef205d09ff4271709d2a12713" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_5d19a0f1f4e9cee5cc2150df7405b1b2.setContent(html_c564e97ef205d09ff4271709d2a12713);
+            
+        
+
+        marker_a91598ee137c96b662def0f905ac676d.bindPopup(popup_5d19a0f1f4e9cee5cc2150df7405b1b2)
+        ;
+
+        
+    
+    
+            var marker_66e0d5791996e6ab16bc2074dbf98894 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_fffeb0d56423e79aaa0b41505f34b298 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_66e0d5791996e6ab16bc2074dbf98894.setIcon(icon_fffeb0d56423e79aaa0b41505f34b298);
+        
+    
+        var popup_0a58ba750ccf97c78a31bf11008ec49b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_56ae91474e250a1afa62ec34c6b4cf7a = $(`<div id="html_56ae91474e250a1afa62ec34c6b4cf7a" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_0a58ba750ccf97c78a31bf11008ec49b.setContent(html_56ae91474e250a1afa62ec34c6b4cf7a);
+            
+        
+
+        marker_66e0d5791996e6ab16bc2074dbf98894.bindPopup(popup_0a58ba750ccf97c78a31bf11008ec49b)
+        ;
+
+        
+    
+    
+            var marker_6be04d84dcaecb78da65b9405d7af6ec = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_23a141950bf24c5eabeb68c08e709bc2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_6be04d84dcaecb78da65b9405d7af6ec.setIcon(icon_23a141950bf24c5eabeb68c08e709bc2);
+        
+    
+        var popup_491f5714876ab210748c8b7993ab560e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fff27485db96f7bf86901fdb0e7d5982 = $(`<div id="html_fff27485db96f7bf86901fdb0e7d5982" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_491f5714876ab210748c8b7993ab560e.setContent(html_fff27485db96f7bf86901fdb0e7d5982);
+            
+        
+
+        marker_6be04d84dcaecb78da65b9405d7af6ec.bindPopup(popup_491f5714876ab210748c8b7993ab560e)
+        ;
+
+        
+    
+    
+            var marker_0671217df3928cbd261a12da1772d02e = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_00e62e2e993b75c1a9261995ed6b75c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0671217df3928cbd261a12da1772d02e.setIcon(icon_00e62e2e993b75c1a9261995ed6b75c2);
+        
+    
+        var popup_1f3959f53536a590dc46b59265011521 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c65a83c8fdbfbcd600c4225930654ead = $(`<div id="html_c65a83c8fdbfbcd600c4225930654ead" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_1f3959f53536a590dc46b59265011521.setContent(html_c65a83c8fdbfbcd600c4225930654ead);
+            
+        
+
+        marker_0671217df3928cbd261a12da1772d02e.bindPopup(popup_1f3959f53536a590dc46b59265011521)
+        ;
+
+        
+    
+    
+            var marker_a6b02d250f9515d017fb1d311a1e1ee0 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_809ddda379df450b8915ba778eadc357 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a6b02d250f9515d017fb1d311a1e1ee0.setIcon(icon_809ddda379df450b8915ba778eadc357);
+        
+    
+        var popup_41915fa3be05872bec05ade12a5e4e95 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f9b53d0459412808967d92d5bcaace2c = $(`<div id="html_f9b53d0459412808967d92d5bcaace2c" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_41915fa3be05872bec05ade12a5e4e95.setContent(html_f9b53d0459412808967d92d5bcaace2c);
+            
+        
+
+        marker_a6b02d250f9515d017fb1d311a1e1ee0.bindPopup(popup_41915fa3be05872bec05ade12a5e4e95)
+        ;
+
+        
+    
+    
+            var marker_2ae3fb5ae9c5166c4bf472105bdf28f3 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_627d21ecd26de5d28280f987accc6523 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2ae3fb5ae9c5166c4bf472105bdf28f3.setIcon(icon_627d21ecd26de5d28280f987accc6523);
+        
+    
+        var popup_bf582c09874392d5aa055551bdbd1c0f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_c91dbfd3983716c9fb4211c1b594a235 = $(`<div id="html_c91dbfd3983716c9fb4211c1b594a235" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_bf582c09874392d5aa055551bdbd1c0f.setContent(html_c91dbfd3983716c9fb4211c1b594a235);
+            
+        
+
+        marker_2ae3fb5ae9c5166c4bf472105bdf28f3.bindPopup(popup_bf582c09874392d5aa055551bdbd1c0f)
+        ;
+
+        
+    
+    
+            var marker_0844d934ae56312f063c2179c70a47b5 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_24f7c0a212a22d0f744cc54ebf7ee5be = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0844d934ae56312f063c2179c70a47b5.setIcon(icon_24f7c0a212a22d0f744cc54ebf7ee5be);
+        
+    
+        var popup_783040a6377aa1c8ae4fac9242eb5e74 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e685b701cc4d74adb3827036b4a02360 = $(`<div id="html_e685b701cc4d74adb3827036b4a02360" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_783040a6377aa1c8ae4fac9242eb5e74.setContent(html_e685b701cc4d74adb3827036b4a02360);
+            
+        
+
+        marker_0844d934ae56312f063c2179c70a47b5.bindPopup(popup_783040a6377aa1c8ae4fac9242eb5e74)
+        ;
+
+        
+    
+    
+            var marker_7797b9fcfec96b76c9954a5a915d2bbf = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_9c679331a3db3f47c1098272977c7631 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7797b9fcfec96b76c9954a5a915d2bbf.setIcon(icon_9c679331a3db3f47c1098272977c7631);
+        
+    
+        var popup_929569a104960afdfc542add8c126ffa = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2e9b856fb4765eaeb1017e4c38bfb213 = $(`<div id="html_2e9b856fb4765eaeb1017e4c38bfb213" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_929569a104960afdfc542add8c126ffa.setContent(html_2e9b856fb4765eaeb1017e4c38bfb213);
+            
+        
+
+        marker_7797b9fcfec96b76c9954a5a915d2bbf.bindPopup(popup_929569a104960afdfc542add8c126ffa)
+        ;
+
+        
+    
+    
+            var marker_05e2e8d9f43ab822b22f6c69c6d7d949 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_ad7e58716583393b436867036b9c22c3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_05e2e8d9f43ab822b22f6c69c6d7d949.setIcon(icon_ad7e58716583393b436867036b9c22c3);
+        
+    
+        var popup_287252a769f691ddd0b11b6df5e360d3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2fc8e963a4c1ec102afac875b32d937e = $(`<div id="html_2fc8e963a4c1ec102afac875b32d937e" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_287252a769f691ddd0b11b6df5e360d3.setContent(html_2fc8e963a4c1ec102afac875b32d937e);
+            
+        
+
+        marker_05e2e8d9f43ab822b22f6c69c6d7d949.bindPopup(popup_287252a769f691ddd0b11b6df5e360d3)
+        ;
+
+        
+    
+    
+            var marker_40aa0f3d16f06172cab4edff3c2205ba = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_a90d15ba7bcd0ddf13e7e0e1e9c931e7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_40aa0f3d16f06172cab4edff3c2205ba.setIcon(icon_a90d15ba7bcd0ddf13e7e0e1e9c931e7);
+        
+    
+        var popup_2f549cd4b5298f529a5775521a809b4a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_db81f3d9bdc4e3a2b44b4b29a170816e = $(`<div id="html_db81f3d9bdc4e3a2b44b4b29a170816e" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_2f549cd4b5298f529a5775521a809b4a.setContent(html_db81f3d9bdc4e3a2b44b4b29a170816e);
+            
+        
+
+        marker_40aa0f3d16f06172cab4edff3c2205ba.bindPopup(popup_2f549cd4b5298f529a5775521a809b4a)
+        ;
+
+        
+    
+    
+            var marker_35a1dfbdec019a8ee658d3d2b7c64ced = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_1a7329dc339746cf1f0e81f0c39fa308 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_35a1dfbdec019a8ee658d3d2b7c64ced.setIcon(icon_1a7329dc339746cf1f0e81f0c39fa308);
+        
+    
+        var popup_182c580bf1866536084f2d3c17c4adcb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3ac50f4ae27027faf0ccaa14e0a65c16 = $(`<div id="html_3ac50f4ae27027faf0ccaa14e0a65c16" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_182c580bf1866536084f2d3c17c4adcb.setContent(html_3ac50f4ae27027faf0ccaa14e0a65c16);
+            
+        
+
+        marker_35a1dfbdec019a8ee658d3d2b7c64ced.bindPopup(popup_182c580bf1866536084f2d3c17c4adcb)
+        ;
+
+        
+    
+    
+            var marker_fa093dc0c7349351ba4b210b91de5428 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_6ab9ac21e405992027c6e6282cb8dad0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fa093dc0c7349351ba4b210b91de5428.setIcon(icon_6ab9ac21e405992027c6e6282cb8dad0);
+        
+    
+        var popup_e72058c9f8bae719362b8ff6aa715477 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8039490a9b3cb7e83bffe5ebf78ee877 = $(`<div id="html_8039490a9b3cb7e83bffe5ebf78ee877" style="width: 100.0%; height: 100.0%;">ip = 201.216.219.212<br>hostname = customer-static-201-216-219.212.iplannetworks.net<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS16814 NSS S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_e72058c9f8bae719362b8ff6aa715477.setContent(html_8039490a9b3cb7e83bffe5ebf78ee877);
+            
+        
+
+        marker_fa093dc0c7349351ba4b210b91de5428.bindPopup(popup_e72058c9f8bae719362b8ff6aa715477)
+        ;
+
+        
+    
+    
+            var marker_910cfbec9754fe4c5cc18d133d76fe0a = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_bac9dec062a8b3bd108f6a943f73a01e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_910cfbec9754fe4c5cc18d133d76fe0a.setIcon(icon_bac9dec062a8b3bd108f6a943f73a01e);
+        
+    
+        var popup_122eb063a7f0075bd7e8b985fb254380 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a96be6d1ed39a0fd6fc092cd49e7a621 = $(`<div id="html_a96be6d1ed39a0fd6fc092cd49e7a621" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_122eb063a7f0075bd7e8b985fb254380.setContent(html_a96be6d1ed39a0fd6fc092cd49e7a621);
+            
+        
+
+        marker_910cfbec9754fe4c5cc18d133d76fe0a.bindPopup(popup_122eb063a7f0075bd7e8b985fb254380)
+        ;
+
+        
+    
+    
+            var marker_ece130544f8c0009a56058a68df053ee = L.marker(
+                [-34.5087, -58.4803],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_13e5948521dbfcc4d09f440fbd846ad1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ece130544f8c0009a56058a68df053ee.setIcon(icon_13e5948521dbfcc4d09f440fbd846ad1);
+        
+    
+        var popup_9e4fec31afa18042f57cd0775c6bceb9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_97d53f64e8afdd7adac4b58d2c921a95 = $(`<div id="html_97d53f64e8afdd7adac4b58d2c921a95" style="width: 100.0%; height: 100.0%;">ip = 181.2.62.101<br>hostname = host101.181-2-62.telecom.net.ar<br>city = Olivos<br>region = Buenos Aires<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1636<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import freewillai import pickle import numpy as np  filename = 'demos/model_prediction_houses_sklearn2.pkl' model = pickle.load(open(filename, 'rb'))  data = {     "bedrooms": 3,      "bathrooms": 1,     "sqft_living": 200,     "sqft_lot": 3362,     "floors": 5,     "waterfront": 1,   # 0 or 1     "view": 0,         # 0 or 1     "condition": 1,    # 5 is best, 1 is worst     "sqft_above": 1050,     "sqft_basement": 90,     "yr_built": 2023 }  data = np.array([list(data.values())])  # Predict house price locally: local_result = model.predict(data)  # Predict house price on the blockchain: result = await freewillai.run_task(model, data)  print("Result validated by freewillai nodes:", result)<br>network = devnet/anvil</div>`)[0];
+                popup_9e4fec31afa18042f57cd0775c6bceb9.setContent(html_97d53f64e8afdd7adac4b58d2c921a95);
+            
+        
+
+        marker_ece130544f8c0009a56058a68df053ee.bindPopup(popup_9e4fec31afa18042f57cd0775c6bceb9)
+        ;
+
+        
+    
+    
+            var marker_630f83ce9c3c7f301c89437739ace434 = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_4055d411ad1d710eb3db5c857a0eebb2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_630f83ce9c3c7f301c89437739ace434.setIcon(icon_4055d411ad1d710eb3db5c857a0eebb2);
+        
+    
+        var popup_07bbaed67542182247a7c03a564930f7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8c06d7b387b0ce68a9dc45f68314fedd = $(`<div id="html_8c06d7b387b0ce68a9dc45f68314fedd" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_07bbaed67542182247a7c03a564930f7.setContent(html_8c06d7b387b0ce68a9dc45f68314fedd);
+            
+        
+
+        marker_630f83ce9c3c7f301c89437739ace434.bindPopup(popup_07bbaed67542182247a7c03a564930f7)
+        ;
+
+        
+    
+    
+            var marker_2f2e6663c1362bd4747993918f1c6ebf = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_eb7fe8f430858f5127cab658d00c2ec5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_2f2e6663c1362bd4747993918f1c6ebf.setIcon(icon_eb7fe8f430858f5127cab658d00c2ec5);
+        
+    
+        var popup_59c62d608d168fdbd0b5e3cca03f5ad4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2800ed0331e6e5bb4810ce6a052e5056 = $(`<div id="html_2800ed0331e6e5bb4810ce6a052e5056" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_59c62d608d168fdbd0b5e3cca03f5ad4.setContent(html_2800ed0331e6e5bb4810ce6a052e5056);
+            
+        
+
+        marker_2f2e6663c1362bd4747993918f1c6ebf.bindPopup(popup_59c62d608d168fdbd0b5e3cca03f5ad4)
+        ;
+
+        
+    
+    
+            var marker_86d8b46bb66af236f408cfbb18fcf20c = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_48fb0b6b528e0e8c9ff009a500debffe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_86d8b46bb66af236f408cfbb18fcf20c.setIcon(icon_48fb0b6b528e0e8c9ff009a500debffe);
+        
+    
+        var popup_dc649912ed9a618b3e2d8dd777135705 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_40514eb949ea6bc0c1602063bb499c78 = $(`<div id="html_40514eb949ea6bc0c1602063bb499c78" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_dc649912ed9a618b3e2d8dd777135705.setContent(html_40514eb949ea6bc0c1602063bb499c78);
+            
+        
+
+        marker_86d8b46bb66af236f408cfbb18fcf20c.bindPopup(popup_dc649912ed9a618b3e2d8dd777135705)
+        ;
+
+        
+    
+    
+            var marker_ca43d5f8a10bc7b14c6f370bbab6be5c = L.marker(
+                [-34.6131, -58.3772],
+                {}
+            ).addTo(map_8cb4a676c1ff826d148500873203a67f);
+        
+    
+            var icon_f71e7844933dede2f625deda412e6201 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ca43d5f8a10bc7b14c6f370bbab6be5c.setIcon(icon_f71e7844933dede2f625deda412e6201);
+        
+    
+        var popup_eefe81603a102047aab381f9fde2bfc9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_685659dfb51da9e5b55ce84c51c2af5b = $(`<div id="html_685659dfb51da9e5b55ce84c51c2af5b" style="width: 100.0%; height: 100.0%;">ip = 181.12.201.220<br>hostname = host220.181-12-201.telecom.net.ar<br>city = Buenos Aires<br>region = Buenos Aires F.D.<br>country = AR<br>org = AS7303 Telecom Argentina S.A.<br>postal = 1871<br>timezone = America/Argentina/Buenos_Aires<br>readme = https://ipinfo.io/missingauth<br>code = import torch import torch.nn as nn import pandas as pd  class TitanicSurvivalNN(nn.Module):     def __init__(self):         super(TitanicSurvivalNN, self).__init__()         self.fc1 = nn.Linear(10, 16)         self.fc2 = nn.Linear(16, 32)         self.fc3 = nn.Linear(32, 1)         self.relu = nn.ReLU()      def forward(self, x):         x = self.relu(self.fc1(x))         x = self.relu(self.fc2(x))         x = torch.sigmoid(self.fc3(x))         return x  model = TitanicSurvivalNN()  model.load_state_dict(torch.load('demos/model_titanic.pth'))    # loading the weights  model.eval()  data = {     "Pclass": 1,  # 0 - False, 1 - True     "Sex": 1,     # 0 - female, 1 - male     "Age": 82.0,     "SibSp": 1,     "Parch": 0,     "Fare": 71.2833,     "Cabin": 7,          # 0-8 representing different decks and cabin locations 0 - Deck A, 1 - Deck B...     "Embarked": 5,       # Embarkation: 0 - Cherbourg, 1 - Queenstown, 2 - Southampton     "Family onboard": 1,     "Title": 2           #Title: 0 - Master, 1 - Mr, 2 - Mrs, 3 - Notable }  inputs = torch.tensor(list(data.values())).float()  with torch.no_grad():     local_result = model(inputs)  fwai_result = await freewillai.run_task(model, inputs, input_size=inputs.size())  print("Local result: Survived" if local_result.item()>0.5 else "Local result: Did not survive") print("Blockchain result: Survived" if fwai_result.data.item()>0.5 else "Blockchain result: Did not survive") <br>network = devnet/anvil</div>`)[0];
+                popup_eefe81603a102047aab381f9fde2bfc9.setContent(html_685659dfb51da9e5b55ce84c51c2af5b);
+            
+        
+
+        marker_ca43d5f8a10bc7b14c6f370bbab6be5c.bindPopup(popup_eefe81603a102047aab381f9fde2bfc9)
+        ;
+
+        
+    
+</script>
+</html>

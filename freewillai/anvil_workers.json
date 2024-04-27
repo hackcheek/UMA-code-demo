@@ -1,0 +1,20 @@
+[
+    {
+        "env_file": "worker1.env",
+        "networks": [
+            "devnet/anvil"
+        ],
+        "stake": 1000,
+        "cooling_time": 0.1,
+        "log_path": "logs/worker1-anvil"
+    },
+    {
+        "env_file": "worker1.env",
+        "networks": [
+            "devnet/anvil"
+        ],
+        "stake": 1000,
+        "cooling_time": 0.1,
+        "log_path": "logs/worker2-anvil"
+    }
+]

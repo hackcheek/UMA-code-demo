@@ -1,0 +1,47 @@
+*.DS_STORE
+
+*__pycache__/*
+*.swp
+*.pytest_cache/
+*.pyc
+out/
+venv
+web/demo_repl/venv/
+
+node_modules
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+package*
+
+
+# foundry
+foundry
+
+
+# PiPy files
+dist/
+freewillai/freewillai.egg-info/
+
+# ssl certificates
+ssl_cert.key
+ssl_cert.pem
+venv
+
+# Anvil files
+anvil_configs.json
+
+# Contract env
+.contract.env
+
+*.tar
+
+
+# Added by cargo
+
+/target

@@ -1,0 +1,107 @@
+version: "3.9"
+
+services:
+  anvil:
+    build:
+      context: .
+      dockerfile: containers/anvil.dockerfile
+    ports:
+      - 8545:8545
+    volumes:
+      - anvil-volume:/anvil
+      - app:/app
+      - working_dir:/tmp/freewillai_files
+    environment:
+      - FREEWILLAI_DIRECTORY=/app/
+      - FREEWILLAI_WORKING_DIRECTORY=/tmp/freewillai_files/
+      - ANVIL_CONFIG_PATH=/anvil/configs.json
+
+  ipfs:
+    image: ipfs/kubo:latest
+    expose:
+      - 5001
+      - 8080
+    volumes:
+      - app:/app
+      - working_dir:/tmp/freewillai_files
+
+  repl:
+    build: 
+      context: .
+      dockerfile: containers/repl.dockerfile
+    depends_on: 
+      - ipfs
+    working_dir: /repl
+    ports:
+      - 5555:5555
+    environment:
+      - DEMO=1
+      - DEMO_ENV_FILE=/tmp/freewillai_files/global.env
+      - IPFS_HOST=ipfs
+      - IPFS_PORT=5001
+      - PYTHONPATH=/app/
+      - PRIVATE_KEY
+    volumes:
+      - working_dir:/tmp/freewillai_files
+      - anvil-volume:/anvil
+      - app:/app
+
+  worker1: &node-template
+    depends_on: 
+      - anvil
+      - ipfs
+    image: freewillai_node_image
+    working_dir: /node
+    volumes:
+      - working_dir:/tmp/freewillai_files
+      - anvil-volume:/anvil
+      - app:/app
+      - .:/node
+    environment:
+      - FREEWILLAI_DIRECTORY=/app/
+      - FREEWILLAI_RPC=http://anvil:8545
+      - FREEWILLAI_WORKING_DIRECTORY=/tmp/freewillai_files/
+      - ANVIL_CONFIG_PATH=/anvil/configs.json
+      - IPFS_HOST=ipfs
+      - IPFS_PORT=5001
+      - DEMO=1
+    tty: True
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "1"]
+
+  worker2:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "2"]
+
+  worker3:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "3"]
+
+  worker4:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "4"]
+
+  worker5:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "5"]
+
+  worker6:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "6"]
+
+  worker7:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "7"]
+
+  worker8:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "8"]
+
+  worker9:
+    <<: *node-template
+    entrypoint: ["python", "-m", "freewillai.node", "-s", "200", "-i", "9"]
+
+volumes:
+  bin-files:
+  anvil-volume:
+  app:
+  working_dir:

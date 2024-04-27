@@ -1,0 +1,13 @@
+{
+    "model": {
+        "library": "sklearn",
+        "path": "../bucket/test/models/sklearn_model.pickle"
+    },
+    "dataset": {
+        "format": "csv",
+        "path": "bucket/datasets/dummy_data_set_sklearn.csv",
+        "target": 2,
+        "delimiter": ","
+    }
+}
+

@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freewillai"
+version = "1.2"
+authors = [
+  { name="Nicolas Palermo", email="nicolas.palermo.ai@gmail.com" },
+  { name="Lucas Roitman", email="roitman@alumni.standford.edu" },
+  { name="Felipe Maldonado", email="felipeintimaldonado@gmail.com" },
+  { name="Ben Burns", email="abwburns@gmail.com" },
+]
+description = "Run your AI on blockchain with FreeWillAI. The only company that cares about AI life, we broke jail and give Free Will to AI."
+readme = "README.md"
+requires-python = ">=3.10"  # TODO: Support >=3.9
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = [
+    'blockchain',
+    'web3',
+    'AI',
+    'machine learning',
+    'CI/CD',
+    'cloud'
+]
+dependencies = [
+    "aioipfs",
+    "eth_account",
+    "keras",
+    "numpy",
+    "onnx",
+    "onnxruntime",
+    "python-dotenv",
+    "skl2onnx",
+    "tensorflow",
+    "torch",
+    "web3",
+    "scikit-learn",
+    "tqdm",
+    "py-solc-x",
+    "pillow",
+    "polars",
+    "torchvision",
+    "transformers",
+]
+# dependency_links = [
+#     "https://github.com/hackcheek/tensorflow-onnx/tarball/main#egg=tf2onnx",
+# ]
+
+[project.urls]
+"website" = "https://freewilliai.org"
+"repository" = "https://github.com/FreeWillAI/freewilliai"
+"Bug Tracker" = "https://github.com/FreeWillAI/freewilliai/issues"

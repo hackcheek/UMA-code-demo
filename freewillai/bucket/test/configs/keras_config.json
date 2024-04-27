@@ -1,0 +1,12 @@
+{
+    "model": {
+        "library": "keras",
+        "path": "../bucket/keras_models/dnn"
+    },
+    "dataset": {
+        "format": "csv",
+        "path": "bucket/datasets/pima-indians-diabetes.csv",
+        "target": 8,
+        "delimiter": ","
+    }
+} 

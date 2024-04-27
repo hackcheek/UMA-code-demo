@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>demo</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+	<link rel="stylesheet" src="style_codemirror.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/theme/material.min.css" integrity="sha512-KjBgp019Payz4Yebl5JhRA8OmI6b1vPL3KHccPRZUtKpUlGDMgk0vc+hcb6Y/eUsNKu+eiTfHv57Pip1YJvdfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <!--<link href="{{ url_for('css', path='/styles.css') }}" rel="stylesheet">-->
+    <link rel="stylesheet" href="/css/styles.css"/>
+</head>
+<body>
+        <div class="background-image">
+        <div class="header">
+            <div class="title_header">
+                <div class="container_p">
+                    <p>freewillai playground</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="d-flex">
+                <section class="input">
+                    <div id="container-tags" class="container_tag">
+                        <div id="house" class="tag active-tag" onclick="setSklearnExample()">house_price.py</div>
+                        <div id="titanic" class="tag" onclick="setPytorchExample()">titanic_survival.py</div>
+                        <div id="fraud" class="tag" onclick="setKerasExample()">fraud_detection.py</div>
+                    </div>
+                        <div class="div_textarea">
+                            <textarea id="code" name="code"></textarea>
+                        </div>
+                </section>
+                <section class="output">
+                    <div class="container_tag">
+                        <div class="style-output">output</div>
+                    </div>
+                    <div>
+                        <div id="output" name="output" class="w-100 scroll_container" rows="15"> 
+                        </div>
+                    </div>
+                </section>
+                <div class="container-button-testnet">
+                  <div class="align-self-center">
+                      <button type="button" class="btn-success" onclick="evaluatePython()">
+                          <h5>Run</h5>
+                      </button>
+                  </div>
+                  <div class="network-style" id="networks" name="networks">
+                    <div class="network-flex-icon">
+                      <i class="fa-solid fa-wifi fa-sm" style="color: #492aed;"></i>
+                      <h3>Network:</h3>
+                    </div>
+                    <div id="container-buttons" class="network-container-buttons">
+                      <button class="btn-choice active-testnet" value="devnet/anvil">locally</button>
+                      <button class="btn-choice" value="testnet/optimism">optimism</button>
+                      <button class="btn-choice" value="testnet/goerli">goerli</button>
+                    </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    .tx-link {
+        color: #FFCC66;
+        white-space: nowrap;
+        font-style: italic;
+    }
+	.scroll_container{
+    	transform-style: preserve-3d;
+          overflow-x: scroll;
+          overflow-y: scroll;
+        }
+        .scroll_content{
+          transform-style: preserve-3d;
+        }
+        .scroll_content *{
+            transform-style: preserve-3d;
+        }
+        .preserve3d{
+          transform-style: preserve-3d;
+        }
+            /*.container_size_page{
+            transform-style: preserve-3d;
+        }*/
+        .background-image{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+       .header{
+       display: flex;
+       flex-direction: row;
+       align-items: center;
+       gap: 330px;
+       position: relative;
+       width: 97%;
+       height: 68px;
+       background-color: #19192D;
+       border-radius: 10px 10px 0px 0px;
+       }
+      .title_header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0px;
+      gap: 327px;
+      width: 100%;
+      height: 34px;
+      }
+      .container_p{
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      padding: 8px 69px;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 0.8px solid rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      flex-grow: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8em;
+      color: white;
+      }
+      .container_p p{
+      margin-bottom: 0px;
+      }
+      .container{
+      max-width: 97% !important; /*cambiar el 93 por 76 cuando vuelva a poner el responsive*/
+      background-color: #19192D;
+      padding: 29px;
+      margin: 0px !important;
+      border-radius: 0px 0px 10px 10px;
+      }
+      .input{
+      width: 50%;
+      }
+      .output{
+      width: 45%;
+      }
+      div#output{
+        color: #DFDEF2;
+        background-color: #090F1F;
+        border-radius: 0px 6px 6px 6px;
+        border: 0px;
+        resize: none;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        color: white;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8em;
+        height: 366px;
+        padding: 14px;
+        line-height: normal;
+        font-weight: 200;
+      }
+      .align-self-center{
+      display: flex;
+        }
+      .align-self-center button:first-child{
+      background: linear-gradient(86.47deg, #7B3DFF 38.16%, #C300D3 110.37%);
+        border-radius: 6px;
+      padding: 25px;
+      padding-left: 30px;
+      padding-right: 30px;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+      }
+      .align-self-center button h5{
+      margin: 0px;
+      line-height: 0px;
+      }
+      .align-self-center select {
+        background-color: rgb(0 0 0 / 13%);
+        border: 2px solid;
+        border-radius: 6px;
+        padding-left: 30px;
+        padding-right: 30px;
+        background: linear-gradient(86.47deg, #7B3DFF 38.16%, #C300D3 110.37%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+        font-size: 1.3em;
+        font-weight: 600;
+      }
+      .d-flex{
+        display: flex!important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        gap: 10px;
+        justify-content: space-evenly;
+      }
+      .cm-s-material.CodeMirror {
+      height: 366px;
+      background-color: #090F1F;
+        border-radius: 0px 6px 6px 6px;
+      font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8em;
+      }
+      .CodeMirror-wrap pre {
+      word-break: break-word;
+        }
+      .container_tag{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        border-radius: 8px 8px 0px 0px;
+        justify-content: left;
+        padding: 0;
+    }
+    .tag{
+        color: #ffffff70;
+        background-color: #090f1f70;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7em;
+      margin-bottom: 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+      text-align: center;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      cursor: pointer;
+    }
+    .style-output{
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7em;
+      margin-bottom: 0;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+      text-align: center;
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+        color: white;
+      background-color: #090F1F;
+    }
+    .active-tag, .tag:hover{
+        color: white;
+      background-color: #090F1F;
+    }
+    .cm-s-material .CodeMirror-gutters {
+      background-color: #090F1F;
+      border: none;
+     }
+    .CodeMirror pre.CodeMirror-line {
+      padding: 0 16px;
+     }
+    .CodeMirror-lines{
+    line-height: 20px;
+    }
+    .CodeMirror-vscrollbar{
+        background-color: inherit;
+     }
+    .cm-s-material .cm-keyword {
+     color: #EB289D;
+    font-weight: 100;
+    }
+    .cm-s-material .cm-variable {
+     color: #DFDEF2;
+    font-weight: 100;
+    }
+    .cm-s-material .cm-property {
+     color: #00F0FF;
+    font-weight: 100;
+    }
+    .cm-s-material .cm-string {
+    color: #F9BD49;
+    font-weight: 100;
+    font-style: italic;
+    }
+    .CodeMirror{
+      color: #fff !important;
+    }
+    .network-style{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .network-flex-icon{
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .network-flex-icon h3{
+        font-size: 13px;
+      color: white;
+      margin: 0px;
+    }
+    .container-button-testnet{
+        width: 97%;
+        display: flex;
+        gap: 26px;
+        flex-wrap: wrap;
+    }
+    .btn-choice{
+        display: inline-flex;
+        padding: 4px 12px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        border: 1px solid #585D6F;
+        background-color: #19192D;
+        font-size: 12px;
+        color: white;
+    }
+    .btn-choice:hover{
+    background-color: #492AED;
+    border: 1px solid #492AED;
+    }
+    .active-testnet{
+            border: 1px solid #492AED;
+        border-radius: 4px;
+        background-color: #492AED;
+    }
+    .network-container-buttons{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    @media only screen and (max-width: 970px){
+    .container_tag{
+      width: 100% !important;
+      gap: 0px;
+     }
+    .container_tag div{
+      width: 33.333% !important;
+     }
+    }
+     @media only screen and (max-width: 540px){
+    .d-flex{
+      flex-wrap: wrap;
+     }
+     .input{
+      width: 100%;
+    }
+     .output{
+      width: 95%;
+     }
+    }
+    </style>
+    <script>
+    //toggle classes in container-buttons
+    var header = document.getElementById("container-buttons");
+    var btns = header.getElementsByClassName("btn-choice");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active-testnet");
+      current[0].className = current[0].className.replace(" active-testnet", "");
+      this.className += " active-testnet";
+  	});
+	}
+  
+    var idTagContainer = document.getElementById("container-tags");
+    var tags = idTagContainer.getElementsByClassName("tag");
+    for (var i = 0; i < tags.length; i++) {
+      tags[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active-tag");
+      current[0].className = current[0].className.replace(" active-tag", "");
+      this.className += " active-tag";
+  	});
+	}
+    </script>
+
+    <!-- Import @tensorflow/tfjs or @tensorflow/tfjs-core -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <!-- Adds the WASM backend to the global backend registry -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm/dist/tf-backend-wasm.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"
+		integrity="sha512-XMlgZzPyVXf1I/wbGnofk1Hfdx+zAWyZjh6c21yGo/k1zNC4Ve6xcQnTDTCHrjFGsOrVicJsBURLYktVEu/8vQ=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/python/python.min.js"
+		integrity="sha512-/mavDpedrvPG/0Grj2Ughxte/fsm42ZmZWWpHz1jCbzd5ECv8CB7PomGtw0NAnhHmE/lkDFkRMupjoohbKNA1Q=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.0.2/dist/web3.min.js"></script>
+    <script>
+    const output = document.getElementById("output");
+
+    const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {
+            name: "python",
+            version: 3,
+            singleLineStringErrors: false
+        },
+        lineNumbers: true,
+        indentUnit: 4,
+        matchBrackets: true,
+        theme: "material",
+        lineWrapping: true
+    });
+
+    //editor.setSize("500","300");
+
+    editor.setValue(`\
+import freewillai
+import pickle
+import numpy as np
+
+filename = 'demos/model_prediction_houses_sklearn2.pkl'
+model = pickle.load(open(filename, 'rb'))
+
+data = {
+    "bedrooms": 3, 
+    "bathrooms": 1,
+    "sqft_living": 200,
+    "sqft_lot": 3362,
+    "floors": 5,
+    "waterfront": 1,   # 0 or 1
+    "view": 0,         # 0 or 1
+    "condition": 1,    # 5 is best, 1 is worst
+    "sqft_above": 1050,
+    "sqft_basement": 90,
+    "yr_built": 2023
+}
+
+data = np.array([list(data.values())])
+
+# Common result ran on your pc
+local_result = model.predict(data)
+
+# Result validated by freewillai nodes
+result = await freewillai.run_task(model, data)
+
+print("Result validated by freewillai nodes:", result)`);
+
+    output.innerHTML = "";
+    let output_list = []
+
+    function isPromise(p) {
+      if (typeof p === 'object' && typeof p.then === 'function') {
+        return true;
+      }
+    }
+
+    let in_tqdm = false
+
+    function linkOnTransactions(msg, explorer) {
+        const hashPattern = /(0x\w+)/g
+        return msg.replace(
+            hashPattern,
+            `<a class="tx-link" href="${explorer}$1" target="_blank">$1</a>`
+        )
+    }
+
+    function showOutput(msg, explorer, prefix) {
+        const tqdm_token = "<|TQDM|>:"
+        console.log(output.innerHTML)
+        if (msg == undefined || msg == "undefined" || msg == "") {
+            return
+        }
+        if (msg.startsWith(tqdm_token)) {
+            last_line = output_list.pop()
+            if (!in_tqdm) {
+                output.innerHTML +=
+                    "\n" + linkOnTransactions(last_line, explorer);
+            }
+            output_list.push(prefix + msg.slice(9) + "\n\n");
+            in_tqdm = true
+        } else {
+            in_tqdm = false
+            output_list.push(prefix + msg + "\n");
+        }
+        output.innerHTML = linkOnTransactions(output_list.join("\n"), explorer);
+    }
+
+    function addToOutput(s, explorer, prefix="") {
+        if (s == "Python initialization complete") {
+            return
+        } else if (isPromise(s)) {
+            s.then((value) => {showOutput(value, explorer, prefix);})
+            s.catch((value) => {showOutput(value, explorer, prefix);})
+        } else {
+            showOutput(s, explorer, prefix);
+        }
+    }
+
+    // FOR PRODUCTION
+    // const host = "playground.freewillai.org"
+    // const ssl = true
+
+    // FOR TEST IN DO SERVER
+    const host = "159.203.136.185:5555"
+    const ssl = false
+
+    // FOR DEVELOPMENT
+    // const host = "0.0.0.0:5555"
+    // const ssl = false
+    
+    let s = ''
+    if (ssl) {
+        s = 's'
+    }
+
+    const explorers = {
+        "devnet/anvil": "https://anvil-has-not-explorer.yet/",
+        "testnet/optimism": "https://goerli-explorer.optimism.io/search?f=0&q=",
+        "testnet/goerli": "https://goerli.etherscan.io/search?f=0&q=",
+    }
+
+    async function evaluatePython(endpoint="run_code") {
+        const url = `ws${s}://${host}/${endpoint}`
+        var socket = new WebSocket(url);
+        const networkElement = document.getElementsByClassName('active-testnet')[0];
+        const network = networkElement.value;
+        const explorer = explorers[network];
+        console.log("net", networkElement)
+
+        socket.onmessage = function(event) {
+            addToOutput(event.data, explorer)
+        }
+
+        socket.onerror = function(error) {
+            console.error(error)
+        }
+
+        socket.onopen = function(e) {
+            console.log('>>', network)
+            output.innerHTML = 'Executing code...\n';
+            output_list.push(output.innerHTML)
+            code = editor.getValue()
+            socket.send(JSON.stringify({network: network, code: code}));
+        }
+
+        socket.onclose = function(e) {
+            output.innerHTML = output.innerHTML.slice(19)
+            output_list = []
+        }
+    }
+    </script>
+</body>
+</html>

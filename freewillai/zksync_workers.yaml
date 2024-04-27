@@ -1,0 +1,20 @@
+worker1: &worker
+  networks:
+    - testnet/zksync
+  stake: 1000000000
+  cooling_time: 1
+  env_file: worker1.env
+  log_path: logs/worker1
+  gpu: cuda:0
+
+worker2:
+  <<: *worker
+  env_file: worker2.env
+  log_path: logs/worker2
+  gpu: cuda:1
+
+worker3:
+  <<: *worker
+  env_file: worker3.env
+  log_path: logs/worker3
+  gpu: cuda:2

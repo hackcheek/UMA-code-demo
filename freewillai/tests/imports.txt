@@ -1,0 +1,207 @@
+import traceback
+
+try:
+    import json
+    import time
+    import os
+    import onnx
+    import onnxruntime as rt
+    import numpy as np
+    import pandas as pd
+    import torch
+    import shutil
+    import tensorflow as tf
+    import polars as pl
+    import logging
+    import transformers
+    from freewillai.transforms import Transforms
+    from typing import Literal, Dict, Optional, Union, List, Type, cast, Tuple, Any, overload
+    from types import MethodType
+    from web3 import Web3, HTTPProvider, WebsocketProvider
+    from web3.middleware.buffered_gas_estimate import buffered_gas_estimate_middleware
+    from web3.middleware import geth_poa_middleware
+    from web3.middleware.signing import construct_sign_and_send_raw_middleware
+    from web3.types import Timestamp
+    from dataclasses import dataclass, field
+    from dotenv import load_dotenv
+    from freewillai.doctypes import AddedFile, BaseHuggingFaceModel, BaseKerasModel, BaseONNXModel, BasePytorchModel, BaseSklearnModel, BaseTokenizer, RunningConfig
+    from freewillai.globals import Global
+    from freewillai.utils import (
+        add_files, contract_exists, get_file, is_ipfs_url, load_global_env,
+        get_hash_from_url, get_path, get_w3
+    )
+    from freewillai.constants import AVALIABLE_DATASET_FORMATS
+    from freewillai.exceptions import NotSupportedError, UnexpectedError, UserRequirement, Fatal
+    from freewillai.doctypes import AddedFile, Middleware
+    from PIL import Image as PILImage
+    from torchvision.transforms import ToTensor
+    from tensorflow import convert_to_tensor
+    from numpy import isin, ndarray
+    from csv import (
+        Sniffer,
+        writer as CSVWriter,
+        DictReader as CSVDictReader,
+        Error as CSVError
+    )
+    from tempfile import NamedTemporaryFile
+    from json.decoder import JSONDecodeError
+    from typing import List, Optional, Union
+    from typing_extensions import Literal
+    from eth_account.signers.local import LocalAccount
+    from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer, AutoModel, PreTrainedModel, TFPreTrainedModel
+    from functools import singledispatchmethod, partial
+    from io import BytesIO
+
+    # __init__.py
+    from freewillai.core import run_task, connect, upload_model, upload_dataset
+
+    # contract.py
+    import logging
+    import time
+    from typing import Any, Dict, Tuple, Optional, List, cast
+    from eth_account.signers.local import LocalAccount
+    from hexbytes import HexBytes
+    from web3 import Web3
+    from web3.exceptions import ContractLogicError
+    from web3.datastructures import AttributeDict
+    from web3.middleware import construct_sign_and_send_raw_middleware
+    from web3.types import TxParams, TxReceipt
+    from freewillai.doctypes import Abi, Bytecode
+    from freewillai.exceptions import UserRequirement, ContractError, Fatal
+    from freewillai.globals import Global
+    from freewillai.common import Anvil, ContractNodeResult, Network
+
+
+    # converter.py
+    import torch
+    import logging
+    import tensorflow as tf
+    from typing import Optional, Tuple
+
+    import sys
+
+    # core.py
+
+    import os
+    import time
+    import asyncio
+    import tensorflow as tf
+    import torch
+    from tqdm import tqdm
+    from tempfile import NamedTemporaryFile
+    from typing import Optional, Tuple, Dict, List, Type, Union, Literal, Any
+    from web3.types import Middleware as Web3Middleware
+    from eth_account.signers.local import LocalAccount
+    from freewillai.common import (
+        ContractNodeResult, IPFSBucket, FWAIModel, IPFSFile,
+        FWAIDataset, Task, FWAIResult, Network, Middleware, FWAIModel
+    )
+    from freewillai.doctypes import BaseTokenizer
+    from freewillai.globals import Global
+    from freewillai.exceptions import FreeWillAIException
+    from freewillai.utils import (
+        get_account, get_hash_from_url, get_url,
+        is_ipfs_url, load_global_env, remove_path
+    )
+    from freewillai.contract import TaskRunnerContract, TokenContract
+
+
+    # doctypes.py
+    from typing import Dict, Tuple, TypeAlias, TypedDict, Union, List, Optional
+    from transformers import (
+        PreTrainedTokenizer, PreTrainedTokenizerFast, PreTrainedModel, TFPreTrainedModel
+    )
+    from torch.nn import Module as TorchNNModule
+    from keras import Model as KerasModel
+    from sklearn.base import BaseEstimator
+    from onnx import ModelProto
+    from web3.types import Middleware as Web3Middleware
+    from transformers import (
+        PreTrainedTokenizer, PreTrainedTokenizerFast, PreTrainedModel, TFPreTrainedModel
+    )
+    from torch.nn import Module as TorchNNModule
+    from keras import Model as KerasModel
+    from sklearn.base import BaseEstimator
+    from onnx import ModelProto
+
+
+    # globals.py
+    import os
+    from dataclasses import dataclass
+    from dotenv import load_dotenv
+    from freewillai.constants import (
+        TASK_RUNNER_CONTRACT_ABI_PATH, TASK_RUNNER_CONTRACT_ADDRESS,
+        TOKEN_CONTRACT_ABI_PATH, TOKEN_CONTRACT_ADDRESS, FWAI_DIRECTORY
+    )
+
+
+    # node.py
+    import os
+    import json
+    import asyncio
+    import random
+    import numpy as np
+    import time
+    import argparse
+    import traceback
+    from typing import List, Union, Dict, cast
+    from tempfile import NamedTemporaryFile
+    from dotenv import dotenv_values
+    from freewillai.common import (
+        Anvil, FWAIDataset, IPFSBucket, Network, FWAIModel, Task, NonTuringModel
+    )
+    from freewillai.globals import Global
+    from freewillai.utils import get_account, get_url, in_cache, load_global_env, run_tasks
+    from freewillai.contract import TaskRunnerContract, TokenContract
+    from freewillai.exceptions import Fatal, NotSupportedError
+    from dataclasses import dataclass
+    from numpy import ndarray
+    from typing import Optional
+    from web3.exceptions import MethodUnavailable
+
+
+    # transforms.py
+    import torch
+    import numpy as np
+    from numpy import ndarray
+    from PIL import Image as PILImage
+    from torchvision import transforms
+    from torchvision.transforms import InterpolationMode, ToTensor
+    from typing import Tuple, Union, Type, Callable, List
+    from tensorflow import convert_to_tensor
+
+    # utils.py
+    import base58
+    import logging
+    import binascii
+    import re
+    import os
+    import asyncio
+    import aioipfs
+    import asyncio
+    import aioipfs
+    import eth_account
+    import torch
+    import numpy as np
+    import random
+    import zipfile
+    from web3 import Web3, HTTPProvider, WebsocketProvider
+    from tqdm import tqdm
+    from typing import (
+        Coroutine, Dict, Iterable, List, Optional, Tuple, Literal, Any, Callable
+    )
+    from freewillai.converter import ModelConverter
+    from freewillai.doctypes import Abi, AddedFile, Bytecode, Middleware
+    from freewillai.exceptions import NotSupportedError, UserRequirement
+    from freewillai.globals import Global
+    from dotenv import load_dotenv
+    from eth_account.signers.local import LocalAccount
+    from solcx import compile_standard
+    from torch.nn import Module as PytorchModule
+    from tensorflow.keras import Model as KerasModule
+    from tempfile import NamedTemporaryFile
+    from pathlib import Path
+    from transformers import PreTrainedTokenizerBase
+except:
+    print('ERROR')
+    traceback.print_exc()

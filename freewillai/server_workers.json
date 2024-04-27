@@ -1,0 +1,38 @@
+[
+    {
+        "env_file": "worker1.env",
+        "networks": [
+            "devnet/anvil",
+            "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 0.1,
+        "log_path": "logs/worker1",
+	    "gpu": "cuda:0"
+    },
+    {
+        "env_file": "worker2.env",
+        "networks": [
+            "devnet/anvil",
+	        "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 0.1,
+        "log_path": "logs/worker2",
+	    "gpu": "cuda:1"
+    },
+    {
+        "env_file": "worker3.env",
+        "networks": [
+            "devnet/anvil",
+	        "testnet/goerli",
+            "testnet/optimism"
+        ],
+        "stake": 1000,
+        "cooling_time": 0.1,
+        "log_path": "logs/worker3",
+	    "gpu": "cuda:2"
+    }
+]

@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+
+import sys
+import dagger
+import asyncio
+import argparse
+from scripts.pipelines import DemoPipeline
+
+
+async def cli():
+    parser = argparse.ArgumentParser() 
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--cooling-time", type=float, default=0.1)
+    parser.add_argument("--stake", type=int, default=1000)
+    parser.add_argument("--dest", type=str, default='containers/')
+    parser.add_argument("--just", type=str)
+    
+    args = parser.parse_args()
+
+    config = dagger.Config(log_output=sys.stderr)
+
+    step1, step2 = [], []
+    if args.just:
+        async with DemoPipeline(config, dest_dir=args.dest) as pipe:
+            names = args.just.split(',') if ',' in args.just else [args.just]
+            if 'anvil' in names:
+                step1.append(pipe.run_anvil(force_build=True))
+            if 'ipfs' in names:
+                step1.append(pipe.run_repl(force_build=True))
+            if 'repl' in names:
+                step1.append(pipe.build_repl())
+                step2.append(pipe.run_repl())
+
+            await asyncio.gather(*step1)
+            await asyncio.gather(*step2)
+        
+    else:
+        await DemoPipeline.deploy(
+            config=config,
+            num_of_workers=args.workers,
+            cooling_time=args.cooling_time,
+            stake=args.stake,
+            dest_dir=args.dest
+        )
+
+
+if __name__ == "__main__":
+    asyncio.run(cli())

@@ -1,0 +1,203 @@
+#!/bin/bash
+
+
+DEMO_ENV_FILE=/tmp/freewillai_files/global.env
+
+function setup() {
+    echo "[*] Setup started"
+
+    # Spin up anvil
+    echo "  > Spining up anvil"
+    docker compose up -d --build anvil
+
+    # Deploy contracts on anvil
+    echo -e "\n  > Deploying contracts on anvil"
+    sleep 1
+    docker compose exec anvil \
+        sh /app/scripts/deploy_contracts.sh env localhost:8545 ${DEMO_ENV_FILE}
+
+    # Spin up ipfs
+    echo -e "\n  > Spining up ipfs"
+    docker compose up -d --build ipfs
+}
+
+function up_worker() {
+    id=$1
+    detach=$2
+    if [[ "${id}" -gt "9" ]]; then
+        echo -e "[!] Just there is 9 workers availables"
+        exit 1
+    elif [[ "${id}" -eq "" ]]; then
+        echo -e "[!] Id of worker not specified."
+        echo -e "  > Usage: docker-manager up worker 1"
+        echo -e "                                   ^^^"
+        echo -e "                   Especify the id of the worker to run"
+        exit 1
+    fi
+
+    echo -e "\n[*] Setting up worker with id=${id}"
+
+    dash_d=""
+    if [[ "${detach}" == "detach" ]]; then
+        dash_d="-d" 
+    fi
+
+    # build "freewillai_node_image" image 
+    docker build -f containers/node.dockerfile -t freewillai_node_image .
+    docker compose run ${detach} --name freewillai_worker${id} worker${id}
+}
+
+function up_workers() {
+
+    num_workers=$1
+    if [[ "${num_workers}" -gt "9" ]]; then
+        echo -e "[!] You can use up to 9 workers"
+        exit 1
+    elif [[ "${num_workers}" -eq "" ]]; then
+        echo -e "[!] Number of workers not specified. All available nodes will be utilized"
+        num_workers=9
+    fi
+    echo -e "\n[*] Setting up ${1} workers in background"
+
+    # build "freewillai_node_image" image 
+    docker build -f containers/node.dockerfile -t freewillai_node_image .
+    for id in `seq 1 ${num_workers}`; do
+        docker compose run -d --name freewillai_worker${id} worker${id}
+    done
+}
+
+function up_repl() {
+    detach=$1
+    which python &>/dev/null
+    if [[ `echo $?` != "0" ]]; then
+        py="python3"
+    else
+        py="python"
+    fi
+
+    echo -e "[*] Spinning up repl on https://demo.freewillai.org"
+
+    dash_d=""
+    if [[ "${detach}" == "detach" ]]; then
+        dash_d="-d"
+    fi
+
+    config=`docker compose exec anvil cat /anvil/configs.json`
+    private_key=`$py << EOF
+import json
+config_js = json.loads("""${config}""")
+print(config_js['private_keys'][-1])
+EOF`
+
+    PRIVATE_KEY=${private_key} docker compose run ${dash_d} \
+        -p 5555:5555 \
+        --name freewillai_repl \
+        repl
+}
+
+function up_all() {
+    setup
+    up_workers
+    up_repl
+}
+
+function down_repl() {
+    echo -e "[*] Stopping repl on https://demo.freewillai.org"
+    docker rm -f freewillai_repl
+    docker rmi -f freewillai-repl
+}
+
+function down_worker() {
+    id=$1
+    if [[ "${id}" -gt "9" ]]; then
+        echo -e "[!] Just there is 9 workers availables"
+        exit 1
+    elif [[ "${id}" -eq "" ]]; then
+        echo -e "[!] Id of worker not specified."
+        echo -e "  > Usage: docker-manager down worker 1"
+        echo -e "                                     ^^^"
+        echo -e "                     Especify the id of the worker to stop"
+        exit 1
+    fi
+    echo -e "\n[*] Stopping worker with id=${id}"
+    docker rm -f freewillai_worker${id}
+}
+
+function down_workers() {
+    num_workers=$1
+    if [[ "${num_workers}" -gt "9" ]]; then
+        echo -e "[!] Just there is 9 workers availables"
+        exit 1
+    elif [[ "${num_workers}" -eq "" ]]; then
+        echo -e "[!] Number of workers not specified. All available nodes will be killed"
+        num_workers=9
+    fi
+
+    for id in `seq 1 ${num_workers}`; do
+        echo -e "\n[*] Stopping worker with id=${id}"
+        docker rm -f freewillai_worker${id}
+    done
+}
+
+function logs_worker() {
+    id=$1
+    dash_f="-f"
+    if [[ $2 == "no_follow" ]]; then
+        dash_f=""
+    fi
+    docker logs freewillai_worker${id} ${dash_f}
+}
+
+function remove_containers() {
+    echo -e "\n[!] Removing containers..."
+    docker stop $(docker ps -aq) 2>/dev/null
+    docker rm $(docker ps -aq) 2>/dev/null
+}
+
+function red_button() {
+    echo -e "\n[!] You pressed the red button!"
+    echo -e "  > All shall be down"
+    remove_containers
+    echo -e "\n[!] Removing networks..."
+    docker network prune -f 2>/dev/null
+    echo -e "\n[!] Removing images..."
+    docker rmi -f $(docker images --filter dangling=true -qa) 2>/dev/null
+    echo -e "\n[!] Removing volumes..."
+    docker volume rm $(docker volume ls --filter dangling=true -q) 2>/dev/null
+    docker rmi -f $(docker images -qa) 2>/dev/null
+}
+
+if [[ "$1" == "down" && "$2" == "containers" ]]; then
+    remove_containers
+elif [[ "$1" == "up" && "$2" == "all" ]]; then
+    up_all $3
+elif [[ "$1" == "up" && "$2" == "worker" ]]; then
+    up_worker $3 $4
+elif [[ "$1" == "up" && "$2" == "workers" ]]; then
+    up_workers $3 $4
+elif [[ "$1" == "up" && "$2" == "repl" ]]; then
+    function _up_repl() {
+        up_repl $3
+        if [[ "${OOM_TOLERANCE}" == "1" ]]; then
+            echo -e '\n\n[!] KILLED. Restarting repl...'
+            down_repl
+            _up_repl
+        fi
+    }
+    _up_repl
+elif [[ "$1" == "down" && "$2" == "all" ]]; then
+    red_button
+elif [[ "$1" == "down" && "$2" == "worker" ]]; then
+    down_worker $3
+elif [[ "$1" == "down" && "$2" == "workers" ]]; then
+    down_workers $3
+elif [[ "$1" == "down" && "$2" == "repl" ]]; then
+    kill `ps fax | grep 'OOM_TOLERANCE=1' | grep 'up repl' | awk '{print $1}'` &>/dev/null
+    down_repl
+elif [[ "$1" == "logs" && "$2" == "worker" ]]; then
+    logs_worker $3 $4
+elif [[ "$1" == "setup" ]]; then
+    setup
+else
+    echo "[!] Bad arguments. Please read README.md file"
+fi

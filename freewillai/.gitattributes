@@ -1,0 +1,2 @@
+bucket/test filter=lfs diff=lfs merge=lfs -text
+bucket filter=lfs diff=lfs merge=lfs -text
