@@ -1,0 +1,820 @@
+# PIPELINE DEFINITION
+# Name: diamonds-pipeline
+# Description: The goal is run this pipeline every time that database is updated and     train the model with the new data
+# Inputs:
+#    baseline_data_loc: str
+#    baseline_model_loc: str
+#    csv_loc: str
+# Outputs:
+#    base_model_loss: float
+#    current_model_loss: float
+components:
+  comp-condition-1:
+    dag:
+      tasks:
+        deploy-component:
+          cachingOptions:
+            enableCache: true
+          componentRef:
+            name: comp-deploy-component
+          inputs:
+            artifacts:
+              base_data:
+                componentInputArtifact: pipelinechannel--ingest-csv-component-base_data
+              trained_model:
+                componentInputArtifact: pipelinechannel--pytorch-model-train-component-trained_model
+              user_data:
+                componentInputArtifact: pipelinechannel--ingest-csv-component-user_data
+            parameters:
+              baseline_data_loc:
+                componentInputParameter: pipelinechannel--baseline_data_loc
+              baseline_model_loc:
+                componentInputParameter: pipelinechannel--baseline_model_loc
+              minio_access_key:
+                runtimeValue:
+                  constant: minio
+              minio_port:
+                runtimeValue:
+                  constant: 9000.0
+              minio_secret_key:
+                runtimeValue:
+                  constant: minio123
+          taskInfo:
+            name: deploy-component
+    inputDefinitions:
+      artifacts:
+        pipelinechannel--ingest-csv-component-base_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        pipelinechannel--ingest-csv-component-user_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        pipelinechannel--pytorch-model-train-component-trained_model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+      parameters:
+        pipelinechannel--baseline_data_loc:
+          parameterType: STRING
+        pipelinechannel--baseline_model_loc:
+          parameterType: STRING
+        pipelinechannel--pytorch-model-evaluation-component-base_model_loss:
+          parameterType: NUMBER_DOUBLE
+        pipelinechannel--pytorch-model-evaluation-component-current_model_loss:
+          parameterType: NUMBER_DOUBLE
+  comp-deploy-component:
+    executorLabel: exec-deploy-component
+    inputDefinitions:
+      artifacts:
+        base_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        trained_model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+        user_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        baseline_data_loc:
+          parameterType: STRING
+        baseline_model_loc:
+          parameterType: STRING
+        minio_access_key:
+          parameterType: STRING
+        minio_port:
+          parameterType: NUMBER_INTEGER
+        minio_secret_key:
+          parameterType: STRING
+  comp-ingest-csv-component:
+    executorLabel: exec-ingest-csv-component
+    inputDefinitions:
+      parameters:
+        access_key:
+          parameterType: STRING
+        baseline_data_loc:
+          parameterType: STRING
+        baseline_model_loc:
+          parameterType: STRING
+        csv_loc:
+          parameterType: STRING
+        port:
+          parameterType: NUMBER_INTEGER
+        secret_key:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        base_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        base_model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+        user_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-preprocess-component:
+    executorLabel: exec-preprocess-component
+    inputDefinitions:
+      artifacts:
+        base_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        user_data:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        cfg:
+          parameterType: STRUCT
+    outputDefinitions:
+      artifacts:
+        test_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        train_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        val_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+  comp-pytorch-model-evaluation-component:
+    executorLabel: exec-pytorch-model-evaluation-component
+    inputDefinitions:
+      artifacts:
+        base_model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+        model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+        test_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        dataset_cfg:
+          parameterType: STRUCT
+    outputDefinitions:
+      parameters:
+        base_model_loss:
+          parameterType: NUMBER_DOUBLE
+        current_model_loss:
+          parameterType: NUMBER_DOUBLE
+  comp-pytorch-model-train-component:
+    executorLabel: exec-pytorch-model-train-component
+    inputDefinitions:
+      artifacts:
+        train_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+        val_dataset:
+          artifactType:
+            schemaTitle: system.Dataset
+            schemaVersion: 0.0.1
+      parameters:
+        dataset_cfg:
+          parameterType: STRUCT
+        num_epochs:
+          parameterType: NUMBER_INTEGER
+    outputDefinitions:
+      artifacts:
+        trained_model:
+          artifactType:
+            schemaTitle: system.Model
+            schemaVersion: 0.0.1
+deploymentSpec:
+  executors:
+    exec-deploy-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - _deploy_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.7.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'minio' 'pandas'\
+          \ && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef _deploy_component(\n    trained_model: Input[Model],\n    user_data:\
+          \ Input[Dataset],\n    base_data: Input[Dataset],\n    baseline_model_loc:\
+          \ str,\n    baseline_data_loc: str,\n    minio_port: int,\n    minio_access_key:\
+          \ str,\n    minio_secret_key: str\n):\n    import pandas as pd\n\n    from\
+          \ minio import Minio\n    from tempfile import NamedTemporaryFile\n\n\n\
+          \    print(\"[*] Deploying new model and new data\")\n\n    client = Minio(\n\
+          \        f'host.k3d.internal:{minio_port}',\n        minio_access_key,\n\
+          \        minio_secret_key,\n        secure=False\n    )\n\n    def put_on_minio(local_path,\
+          \ s3_location):\n        result = client.fput_object(\n            *s3_location.split('/',\
+          \ 1), local_path,\n        )\n        print(f\"[*] Created {result.object_name}\
+          \ object; etag: {result.etag}, version-id: {result.version_id}\")\n\n  \
+          \  _user_data = pd.read_csv(user_data.path)\n    _base_data = pd.read_csv(base_data.path)\n\
+          \n    new_baseline_data = pd.concat((_base_data, _user_data)) \n\n    new_baseline_data_path\
+          \ = NamedTemporaryFile().name\n\n    new_baseline_data.to_csv(new_baseline_data_path,\
+          \ index=False)\n\n    put_on_minio(trained_model.path, baseline_model_loc)\n\
+          \    put_on_minio(new_baseline_data_path, baseline_data_loc)\n\n"
+        image: python:3.10
+    exec-ingest-csv-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - _ingest_csv_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.7.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'pandas' 'minio'\
+          \ && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef _ingest_csv_component(\n    csv_loc: str,\n    baseline_model_loc:\
+          \ str,\n    baseline_data_loc: str,\n    port: int,\n    access_key: str,\n\
+          \    secret_key: str,\n    user_data: Output[Dataset],\n    base_data: Output[Dataset],\n\
+          \    base_model: Output[Model]\n):\n    \"\"\"\n    Note that, in a real\
+          \ world environment, this kind of component ingest data to a database and\
+          \ would return table name.\n    However for this case I'll ingest the\
+          \ data to a temp csv file and return the path.\n    \"\"\"\n    import pandas\
+          \ as pd\n    from minio import Minio\n    from io import BytesIO\n\n   \
+          \ client = Minio(\n        f'host.k3d.internal:{port}',\n        access_key,\n\
+          \        secret_key,\n        secure=False\n    )\n\n    print(\"[*] Ingesting\
+          \ data\")\n\n    response = client.get_object(*csv_loc.split('/', 1))\n\
+          \    data = pd.read_csv(BytesIO(response.data))\n    data.to_csv(user_data.path,\
+          \ index=False)\n\n    response = client.get_object(*baseline_data_loc.split('/',\
+          \ 1))\n    _base_data = pd.read_csv(BytesIO(response.data))\n    _base_data.to_csv(base_data.path,\
+          \ index=False)\n\n    response = client.get_object(*baseline_model_loc.split('/',\
+          \ 1))\n    client.fget_object(*baseline_model_loc.split('/', 1), base_model.path)\n\
+          \n"
+        image: python:3.10
+    exec-preprocess-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - _preprocess_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.7.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'pandas' 'numpy'\
+          \ && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef _preprocess_component(\n    user_data: Input[Dataset],\n    base_data:\
+          \ Input[Dataset],\n    cfg: dict,\n    train_dataset: Output[Dataset],\n\
+          \    test_dataset: Output[Dataset],\n    val_dataset: Output[Dataset],\n\
+          ):\n    import numpy as np\n    import pandas as pd\n    from itertools\
+          \ import accumulate\n\n    print(\"[*] Preprocessing and Splitting data\"\
+          )\n\n    def z_score(col):\n        sigma = col.std()\n        mean = col.median()\n\
+          \        return np.abs((col - mean) / sigma)\n\n\n    def drop_outliers(data):\n\
+          \        threshold_4_cols = ['table', 'depth', 'carat']\n        threshold_3_cols\
+          \ = ['x', 'y', 'z']\n        for col_name in data.columns:\n           \
+          \ if col_name in threshold_4_cols:\n                data = data[z_score(data[col_name])\
+          \ < 4]\n            elif col_name in threshold_3_cols:\n               \
+          \ data = data[z_score(data[col_name]) < 3]\n        return data\n\n\n  \
+          \  def drop_unknown_labels(data):\n        return data[\n            (data[\"\
+          clarity\"].isin(cfg['CLARITY_LABELS']))\n            & (data['color'].isin(cfg['COLOR_LABELS']))\n\
+          \            & (data['cut'].isin(cfg['CUT_LABELS']))\n        ]\n\n\n  \
+          \  def apply_one_hot_encoder(data, col_name):\n        encoded_df = pd.get_dummies(data[col_name],\
+          \ prefix=col_name, dtype=int)\n        return data.drop(columns=[col_name]).join(encoded_df)\n\
+          \n\n    def apply_std_scaler(col):\n        col -= col.mean()\n        col\
+          \ /= col.std()\n        return col\n\n\n    def random_split(data: pd.DataFrame,\
+          \ partitions: list[float]) -> list[pd.DataFrame]:\n        shuffled_data\
+          \ = data.copy().sample(frac=1)\n        m = shuffled_data.shape[0]\n   \
+          \     samples = [int(i * m) for i in accumulate(partitions)]\n        *datasets,\
+          \ residual = np.split(shuffled_data, samples)\n        if residual.shape[0]\
+          \ < 10:\n            datasets[-1] = pd.concat([datasets[-1], residual])\n\
+          \        return datasets\n\n\n    def preprocess(data):\n        # Capture\
+          \ just the important features and target\n        data = data[cfg['TRAINING_FEATURES']\
+          \ + [cfg['TARGET']]]\n\n        # Price should be more than zero\n     \
+          \   data = data.loc[data['price'] > 0]\n\n        # Sizes should be more\
+          \ than zero\n        data = data.loc[data['x'] > 0]\n\n        # Drop outliers\n\
+          \        data = drop_outliers(data)\n\n        # Drop unknown categorical\
+          \ labels\n        data = drop_unknown_labels(data)\n\n        # Process\
+          \ variables for training\n        for col_name in data.columns:\n      \
+          \      if col_name in cfg['CATEGORICAL_FEATURES']:\n                data\
+          \ = apply_one_hot_encoder(data, col_name)\n            elif col_name in\
+          \ cfg['NUMERICAL_FEATURES'] + [cfg['TARGET']]:\n                data[col_name]\
+          \ = apply_std_scaler(data[col_name])\n\n        return data\n\n\n    _user_data\
+          \ = pd.read_csv(user_data.path)\n    _base_data = pd.read_csv(base_data.path)\n\
+          \n    _user_data = preprocess(_user_data)\n    _base_data = preprocess(_base_data)\n\
+          \n    test_data, _user_data = random_split(_user_data, [0.5, 0.5])\n   \
+          \ entire_train_data = pd.concat((_base_data, _user_data))\n    train_data,\
+          \ val_data = random_split(entire_train_data, [0.9, 0.1])\n\n    train_data.to_csv(train_dataset.path,\
+          \ index=False)\n    test_data.to_csv(test_dataset.path, index=False)\n \
+          \   val_data.to_csv(val_dataset.path, index=False)\n\n"
+        image: python:3.10
+    exec-pytorch-model-evaluation-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - _pytorch_model_evaluation_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.7.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'pandas' 'torch'\
+          \ 'numpy' && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef _pytorch_model_evaluation_component(\n    model: Input[Model],\n\
+          \    test_dataset: Input[Dataset],\n    base_model: Input[Model],\n    dataset_cfg:\
+          \ dict,\n) -> NamedTuple(\n  'results',\n  [\n    ('current_model_loss',\
+          \ float),\n    ('base_model_loss', float)\n  ]\n):\n    import torch\n \
+          \   import pandas as pd\n    import numpy as np\n\n    from torch.utils.data\
+          \ import DataLoader, Dataset\n\n    print(f\"[*] Evaluating model\")\n\n\
+          \n    class DiamondsPytorchDataset(Dataset):\n        def __init__(self,\
+          \ data, cat_features, num_features, label):\n            self.data = data\n\
+          \            self.cat_features = cat_features\n            self.num_features\
+          \ = num_features\n            self.label = label\n\n        def __len__(self):\n\
+          \            return self.data.shape[0]\n\n        def __getitem__(self,\
+          \ idx):\n            row = self.data.iloc[idx]\n            x_num = torch.from_numpy(\n\
+          \                row[self.num_features].to_numpy().astype(np.float32)\n\
+          \            ).view(-1)\n\n            x_cat = torch.from_numpy(\n     \
+          \           row[self.cat_features].to_numpy().astype(np.int32)\n       \
+          \     ).view(-1)\n\n            target = torch.from_numpy(row[[self.label]].to_numpy().astype(np.float32))\n\
+          \            return x_cat, x_num, target\n\n\n    def get_dataloader(data):\n\
+          \        cat_features = list(filter(\n            lambda x: x not in dataset_cfg['NUMERICAL_FEATURES']\
+          \ + [dataset_cfg['TARGET']],\n            data.columns\n        ))\n\n \
+          \       data = DiamondsPytorchDataset(\n            data,\n            cat_features,\n\
+          \            dataset_cfg['NUMERICAL_FEATURES'],\n            dataset_cfg['TARGET']\n\
+          \        )\n\n        return DataLoader(data, batch_size=1024, shuffle=True)\n\
+          \n\n    def evaluate(model):\n        model.eval()\n        loss_fn = torch.nn.MSELoss()\n\
+          \        test_loss = 0.0\n        with torch.no_grad():\n            for\
+          \ x_cat, x_num, y in test_loader:\n                pred = model(x_cat, x_num)\n\
+          \                loss = loss_fn(pred, y)\n                test_loss += loss.item()\
+          \ * x_cat.size(0)\n\n        test_loss = test_loss / len(_test_dataset)\n\
+          \        return test_loss\n\n\n    _model = torch.jit.load(model.path)\n\
+          \    _test_dataset = pd.read_csv(test_dataset.path)\n    _base_model = torch.jit.load(base_model.path)\n\
+          \n    test_loader = get_dataloader(_test_dataset)\n\n    current_model_loss\
+          \ = evaluate(_model)\n    base_model_loss = evaluate(_base_model)\n\n  \
+          \  model.metadata['test_loss'] = current_model_loss\n    base_model.metadata['test_loss']\
+          \ = base_model_loss\n\n    print(f\"[*] Current Model Loss: {current_model_loss}\"\
+          )\n    print(f\"[*] Baseline Model Loss: {base_model_loss}\")\n\n    return\
+          \ current_model_loss, base_model_loss\n\n"
+        image: python:3.10
+    exec-pytorch-model-train-component:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - _pytorch_model_train_component
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.7.0'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"'  &&\
+          \  python3 -m pip install --quiet --no-warn-script-location 'pandas' 'torch'\
+          \ 'numpy' && \"$0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef _pytorch_model_train_component(\n    train_dataset: dsl.Input[dsl.Dataset],\n\
+          \    val_dataset: dsl.Input[dsl.Dataset],\n    num_epochs: int,\n    dataset_cfg:\
+          \ dict,\n    trained_model: dsl.Output[dsl.Model]\n):\n    import pandas\
+          \ as pd\n    import numpy as np\n    import torch\n    import os\n    import\
+          \ json\n    import tempfile\n\n    from torch.utils.data import DataLoader,\
+          \ Dataset\n\n\n    checkpoints_directory = tempfile.TemporaryDirectory().name\n\
+          \n\n    class RegressionModel(torch.nn.Module):\n        def __init__(self,\
+          \ cat_features_amount, embedding_dim, num_features_amount):\n          \
+          \  super(RegressionModel, self).__init__()\n            self.embedding =\
+          \ torch.nn.Embedding(\n                num_embeddings=cat_features_amount,\n\
+          \                embedding_dim=embedding_dim\n            )\n          \
+          \  self.relu = torch.nn.ReLU()\n            self.sig = torch.nn.Sigmoid()\n\
+          \            self.dense1 = torch.nn.Linear(\n                (embedding_dim\
+          \ * cat_features_amount) + num_features_amount,\n                512\n \
+          \           )\n            self.dense2 = torch.nn.Linear(512, 1024)\n  \
+          \          self.dense3 = torch.nn.Linear(1024, 512)\n            self.dense4\
+          \ = torch.nn.Linear(512, 128)\n            self.out = torch.nn.Linear(128,\
+          \ 1)\n\n        def forward(self, x_cat, x_num):\n            x_cat = self.embedding(x_cat)\n\
+          \            x_cat = x_cat.view(x_cat.size(0), -1)\n            x = torch.cat([x_cat,\
+          \ x_num], dim=1)\n\n            x = self.dense1(x)\n            x = self.relu(x)\n\
+          \            x = self.dense2(x)\n            x = self.relu(x)\n        \
+          \    x = self.dense3(x)\n            x = self.relu(x)\n            x = self.dense4(x)\n\
+          \            x = self.sig(x)\n            x = self.out(x)\n            return\
+          \ x\n\n\n    class DiamondsPytorchDataset(Dataset):\n        def __init__(self,\
+          \ data, cat_features, num_features, label):\n            self.data = data\n\
+          \            self.cat_features = cat_features\n            self.num_features\
+          \ = num_features\n            self.label = label\n\n        def __len__(self):\n\
+          \            return self.data.shape[0]\n\n        def __getitem__(self,\
+          \ idx):\n            row = self.data.iloc[idx]\n            x_num = torch.from_numpy(\n\
+          \                row[self.num_features].to_numpy().astype(np.float32)\n\
+          \            ).view(-1)\n\n            x_cat = torch.from_numpy(\n     \
+          \           row[self.cat_features].to_numpy().astype(np.int32)\n       \
+          \     ).view(-1)\n\n            target = torch.from_numpy(row[[self.label]].to_numpy().astype(np.float32))\n\
+          \            return x_cat, x_num, target\n\n\n    def training_loop(\n \
+          \       model,\n        train_loader,\n        val_loader,\n        optimizer,\n\
+          \        loss_fn,\n        train_dataset_length,\n        val_dataset_length,\n\
+          \        checkpoints_directory,\n        num_epochs,\n    ):\n        best_loss\
+          \ = float('inf')\n        best_epoch = 0\n\n        for epoch in range(num_epochs):\n\
+          \            model.train()\n            train_loss = 0.0\n            for\
+          \ x_cat, x_num, y in train_loader:\n                optimizer.zero_grad()\n\
+          \                pred = model(x_cat, x_num)\n                loss = loss_fn(pred,\
+          \ y)\n                loss.backward()\n                optimizer.step()\n\
+          \n                train_loss += loss.item() * x_cat.size(0)\n\n        \
+          \    model.eval()\n            val_loss = 0.0\n            with torch.no_grad():\n\
+          \                for x_cat, x_num, y in val_loader:\n                  \
+          \  pred = model(x_cat, x_num)\n                    loss = loss_fn(pred,\
+          \ y)\n                    val_loss += loss.item() * x_cat.size(0)\n\n  \
+          \          train_loss = train_loss / train_dataset_length\n            val_loss\
+          \ = val_loss / val_dataset_length\n\n            save_dir = os.path.join(checkpoints_directory,\
+          \ f'epoch_{epoch + 1}')\n            if not os.path.exists(save_dir):\n\
+          \                os.makedirs(save_dir)\n            weights_path = os.path.join(save_dir,\
+          \ 'weights.pth')\n            torch.save(model.state_dict(), weights_path)\n\
+          \n            if val_loss < best_loss:\n                best_loss = val_loss\n\
+          \                best_epoch = epoch + 1\n\n            metadata = {\n  \
+          \              'train_loss': train_loss,\n                'val_loss': val_loss,\n\
+          \                'best_epoch': best_epoch,\n                'best_loss':\
+          \ best_loss,\n            }\n\n            with open(os.path.join(save_dir,\
+          \ 'metadata.json'), 'w') as mfile:\n                json.dump(metadata,\
+          \ mfile)\n\n            print(f'Epoch {epoch+1}, train_loss: {train_loss:.4f},\
+          \ val_loss: {val_loss:.4f}')\n\n        return best_epoch\n\n\n    _train_dataset\
+          \ = pd.read_csv(train_dataset.path) \n    _val_dataset = pd.read_csv(val_dataset.path)\
+          \ \n\n    cat_features = list(filter(\n        lambda x: x not in dataset_cfg['NUMERICAL_FEATURES']\
+          \ + [dataset_cfg['TARGET']],\n        _train_dataset.columns\n    ))\n\n\
+          \    _train_dataset = DiamondsPytorchDataset(\n        _train_dataset,\n\
+          \        cat_features,\n        dataset_cfg['NUMERICAL_FEATURES'],\n   \
+          \     dataset_cfg['TARGET']\n    )\n\n    _val_dataset = DiamondsPytorchDataset(\n\
+          \        _val_dataset,\n        cat_features,\n        dataset_cfg['NUMERICAL_FEATURES'],\n\
+          \        dataset_cfg['TARGET']\n    )\n\n    train_loader = DataLoader(_train_dataset,\
+          \ batch_size=1024, shuffle=True)\n    val_loader = DataLoader(_val_dataset,\
+          \ batch_size=1024, shuffle=True)\n\n    embedding_dim = 3\n    model = RegressionModel(\n\
+          \        len(cat_features),\n        embedding_dim,\n        len(dataset_cfg['NUMERICAL_FEATURES'])\n\
+          \    )\n    loss_fn = torch.nn.MSELoss()\n    optimizer = torch.optim.Adam(model.parameters(),\
+          \ lr=0.001)\n\n    print(\"[*] Starting training loop\")\n\n    best_epoch\
+          \ = training_loop(\n        model,\n        train_loader,\n        val_loader,\n\
+          \        optimizer,\n        loss_fn,\n        len(_train_dataset),\n  \
+          \      len(_val_dataset),\n        checkpoints_directory,\n        num_epochs,\n\
+          \    )\n\n    best_weights_path = os.path.join(checkpoints_directory, f'epoch_{best_epoch}',\
+          \ 'weights.pth')\n    model.load_state_dict(torch.load(best_weights_path))\n\
+          \    torch.jit.script(model).save(trained_model.path)\n\n"
+        image: python:3.10
+pipelineInfo:
+  description: The goal is run this pipeline every time that database is updated and     train
+    the model with the new data
+  name: diamonds-pipeline
+root:
+  dag:
+    outputs:
+      parameters:
+        base_model_loss:
+          valueFromParameter:
+            outputParameterKey: base_model_loss
+            producerSubtask: pytorch-model-evaluation-component
+        current_model_loss:
+          valueFromParameter:
+            outputParameterKey: current_model_loss
+            producerSubtask: pytorch-model-evaluation-component
+    tasks:
+      condition-1:
+        componentRef:
+          name: comp-condition-1
+        dependentTasks:
+        - ingest-csv-component
+        - pytorch-model-evaluation-component
+        - pytorch-model-train-component
+        inputs:
+          artifacts:
+            pipelinechannel--ingest-csv-component-base_data:
+              taskOutputArtifact:
+                outputArtifactKey: base_data
+                producerTask: ingest-csv-component
+            pipelinechannel--ingest-csv-component-user_data:
+              taskOutputArtifact:
+                outputArtifactKey: user_data
+                producerTask: ingest-csv-component
+            pipelinechannel--pytorch-model-train-component-trained_model:
+              taskOutputArtifact:
+                outputArtifactKey: trained_model
+                producerTask: pytorch-model-train-component
+          parameters:
+            pipelinechannel--baseline_data_loc:
+              componentInputParameter: baseline_data_loc
+            pipelinechannel--baseline_model_loc:
+              componentInputParameter: baseline_model_loc
+            pipelinechannel--pytorch-model-evaluation-component-base_model_loss:
+              taskOutputParameter:
+                outputParameterKey: base_model_loss
+                producerTask: pytorch-model-evaluation-component
+            pipelinechannel--pytorch-model-evaluation-component-current_model_loss:
+              taskOutputParameter:
+                outputParameterKey: current_model_loss
+                producerTask: pytorch-model-evaluation-component
+        taskInfo:
+          name: Deploy if model is better
+        triggerPolicy:
+          condition: inputs.parameter_values['pipelinechannel--pytorch-model-evaluation-component-current_model_loss']
+            < inputs.parameter_values['pipelinechannel--pytorch-model-evaluation-component-base_model_loss']
+      ingest-csv-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-ingest-csv-component
+        inputs:
+          parameters:
+            access_key:
+              runtimeValue:
+                constant: minio
+            baseline_data_loc:
+              componentInputParameter: baseline_data_loc
+            baseline_model_loc:
+              componentInputParameter: baseline_model_loc
+            csv_loc:
+              componentInputParameter: csv_loc
+            port:
+              runtimeValue:
+                constant: 9000.0
+            secret_key:
+              runtimeValue:
+                constant: minio123
+        taskInfo:
+          name: ingest-csv-component
+      preprocess-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-preprocess-component
+        dependentTasks:
+        - ingest-csv-component
+        inputs:
+          artifacts:
+            base_data:
+              taskOutputArtifact:
+                outputArtifactKey: base_data
+                producerTask: ingest-csv-component
+            user_data:
+              taskOutputArtifact:
+                outputArtifactKey: user_data
+                producerTask: ingest-csv-component
+          parameters:
+            cfg:
+              runtimeValue:
+                constant:
+                  BASELINE_DATASET_PATH: pipes_code/src/datasets/actual_dataset.csv
+                  CATEGORICAL_FEATURES:
+                  - color
+                  - clarity
+                  - cut
+                  CLARITY_LABELS:
+                  - SI2
+                  - SI1
+                  - VS2
+                  - IF
+                  - VVS2
+                  - VS1
+                  - I1
+                  - VVS1
+                  COLOR_LABELS:
+                  - H
+                  - I
+                  - F
+                  - G
+                  - E
+                  - D
+                  - J
+                  CUT_LABELS:
+                  - Ideal
+                  - Premium
+                  - Very Good
+                  - Good
+                  - Fair
+                  NUMERICAL_FEATURES:
+                  - x
+                  - carat
+                  TARGET: price
+                  TRAINING_FEATURES:
+                  - x
+                  - carat
+                  - color
+                  - clarity
+                  - cut
+        taskInfo:
+          name: preprocess-component
+      pytorch-model-evaluation-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-pytorch-model-evaluation-component
+        dependentTasks:
+        - ingest-csv-component
+        - preprocess-component
+        - pytorch-model-train-component
+        inputs:
+          artifacts:
+            base_model:
+              taskOutputArtifact:
+                outputArtifactKey: base_model
+                producerTask: ingest-csv-component
+            model:
+              taskOutputArtifact:
+                outputArtifactKey: trained_model
+                producerTask: pytorch-model-train-component
+            test_dataset:
+              taskOutputArtifact:
+                outputArtifactKey: test_dataset
+                producerTask: preprocess-component
+          parameters:
+            dataset_cfg:
+              runtimeValue:
+                constant:
+                  BASELINE_DATASET_PATH: pipes_code/src/datasets/actual_dataset.csv
+                  CATEGORICAL_FEATURES:
+                  - color
+                  - clarity
+                  - cut
+                  CLARITY_LABELS:
+                  - SI2
+                  - SI1
+                  - VS2
+                  - IF
+                  - VVS2
+                  - VS1
+                  - I1
+                  - VVS1
+                  COLOR_LABELS:
+                  - H
+                  - I
+                  - F
+                  - G
+                  - E
+                  - D
+                  - J
+                  CUT_LABELS:
+                  - Ideal
+                  - Premium
+                  - Very Good
+                  - Good
+                  - Fair
+                  NUMERICAL_FEATURES:
+                  - x
+                  - carat
+                  TARGET: price
+                  TRAINING_FEATURES:
+                  - x
+                  - carat
+                  - color
+                  - clarity
+                  - cut
+        taskInfo:
+          name: pytorch-model-evaluation-component
+      pytorch-model-train-component:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-pytorch-model-train-component
+        dependentTasks:
+        - preprocess-component
+        inputs:
+          artifacts:
+            train_dataset:
+              taskOutputArtifact:
+                outputArtifactKey: train_dataset
+                producerTask: preprocess-component
+            val_dataset:
+              taskOutputArtifact:
+                outputArtifactKey: val_dataset
+                producerTask: preprocess-component
+          parameters:
+            dataset_cfg:
+              runtimeValue:
+                constant:
+                  BASELINE_DATASET_PATH: pipes_code/src/datasets/actual_dataset.csv
+                  CATEGORICAL_FEATURES:
+                  - color
+                  - clarity
+                  - cut
+                  CLARITY_LABELS:
+                  - SI2
+                  - SI1
+                  - VS2
+                  - IF
+                  - VVS2
+                  - VS1
+                  - I1
+                  - VVS1
+                  COLOR_LABELS:
+                  - H
+                  - I
+                  - F
+                  - G
+                  - E
+                  - D
+                  - J
+                  CUT_LABELS:
+                  - Ideal
+                  - Premium
+                  - Very Good
+                  - Good
+                  - Fair
+                  NUMERICAL_FEATURES:
+                  - x
+                  - carat
+                  TARGET: price
+                  TRAINING_FEATURES:
+                  - x
+                  - carat
+                  - color
+                  - clarity
+                  - cut
+            num_epochs:
+              runtimeValue:
+                constant: 1.0
+        taskInfo:
+          name: pytorch-model-train-component
+  inputDefinitions:
+    parameters:
+      baseline_data_loc:
+        parameterType: STRING
+      baseline_model_loc:
+        parameterType: STRING
+      csv_loc:
+        parameterType: STRING
+  outputDefinitions:
+    parameters:
+      base_model_loss:
+        parameterType: NUMBER_DOUBLE
+      current_model_loss:
+        parameterType: NUMBER_DOUBLE
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.7.0
